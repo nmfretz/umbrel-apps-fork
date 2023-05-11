@@ -28,6 +28,7 @@ services:
     depends_on:
       - redis
       - postgres
+      - typesense
     restart: on-failure
 
   microservices:
@@ -54,6 +55,7 @@ services:
     depends_on:
       - redis
       - postgres
+      - typesense
     restart: on-failure
 
   machine-learning:
