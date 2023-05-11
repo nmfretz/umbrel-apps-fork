@@ -12,6 +12,8 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      # this is likely not needed in our case
+      # - UMASK=002
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
