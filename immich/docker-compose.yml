@@ -98,8 +98,6 @@ services:
     environment:
       TYPESENSE_API_KEY: "random-text-key"
       TYPESENSE_DATA_DIR: "/data"
-    logging:
-      driver: none
     volumes:
       - ${APP_DATA_DIR}/data/tsdata:/data
     restart: on-failure
