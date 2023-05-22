@@ -10,7 +10,7 @@ services:
   server:
     image: adguard/adguardhome:v0.107.29@sha256:ce8b9ae82365edcd4c91d0a3763091fac6a9541a1ef36d9b65274078517745b2
     # Check if we can run non-root
-    user: "1000:1000"
+    # user: "1000:1000"
     restart: on-failure
     ports:
     # plain DNS
