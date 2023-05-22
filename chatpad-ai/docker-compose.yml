@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: chatpat-ai_web_1
+      APP_PORT: 3000
+
+  web:
+    image: ghcr.io/deiucanta/chatpad:e60272eefaf6e61f435b8bc65befba577b883750@sha256:fd0fa39524931e1e072cab58fcecdec51f60cf73c440cef05283cfa6a5b80cc9
