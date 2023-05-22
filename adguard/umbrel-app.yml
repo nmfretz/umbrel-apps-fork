@@ -1,0 +1,27 @@
+manifestVersion: 1
+id: adguard
+category: Networking
+name: AdGuard Home
+version: "0.107.29"
+tagline: Privacy protection center for you and your devices
+description: >-
+  AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it’ll cover ALL your home devices,
+  and you don’t need any client-side software for that. With the rise of Internet-Of-Things and connected devices, it becomes
+  more and more important to be able to control your whole network.
+developer: AdGuard
+website: https://adguard.com/
+dependencies: []
+repo: https://github.com/AdguardTeam/AdGuardHome
+support: https://adguard.com/en/support.html
+port: 8083
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+# path: "/admin/"
+# defaultUsername: ""
+# deterministicPassword: true
+torOnly: false
+releaseNotes: ""
+submitter: Umbrel
+submission: https://github.com/getumbrel/umbrel-apps/pulls
