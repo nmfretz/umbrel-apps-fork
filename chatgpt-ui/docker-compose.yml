@@ -12,7 +12,7 @@ services:
       SERVER_DOMAIN: http://web-server
       DEFAULT_LOCALE: en
     depends_on:
-      - backend-web-server
+      - web-server
     restart: on-failure
 
   wsgi-server:
