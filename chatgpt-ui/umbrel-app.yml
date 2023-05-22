@@ -1,0 +1,24 @@
+manifestVersion: 1
+id: chatgpt-ui
+category: Productivity
+name: ChatGPT AI
+version: "2.5.5"
+tagline: An unofficial client for ChatGPT
+description: >-
+  A ChatGPT web client that supports multiple users, multiple languages, and database connection for persistent data storage.
+developer: Wong Saang
+website: https://github.com/WongSaang/chatgpt-ui
+dependencies: []
+repo: https://github.com/WongSaang/chatgpt-ui
+support: https://github.com/WongSaang/chatgpt-ui/issues
+port: 10103
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
+submitter: Umbrel
+submission: https://github.com/getumbrel/umbrel-apps

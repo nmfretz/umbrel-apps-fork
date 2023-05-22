@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: chatgpt-ui_web_1
+      APP_PORT: 80
+
+  web:
+    image: nmfretz/chatgpt-ui-client:v2.5.5@sha256:d38c9813b1bea9d5747ada7701418b0c65eb2e519ed39c3b04c527ed2b741ae9
+    environment:
+      SERVER_DOMAIN: http://web-server
+      DEFAULT_LOCALE: en
+    depends_on:
+      - backend-web-server
+    restart: on-failure
+
+  wsgi-server:
+    image: nmfretz/chatgpt-ui-wsgi-server:v2.5.1@sha256:08792d2e861af4785c5c5fd6f1ad7f6c4376486cfb85b5c68268e7086cfa097c
+    volumes:
+      - ${APP_DATA_DIR}/data/sqlite3:/app/db.sqlite3
+    environment:
+      # DEBUG: false
+      # APP_DOMAIN: ${APP_DOMAIN:-localhost:9000}
+      APP_DOMAIN: http://web-server:9000
+      SERVER_WORKERS: 3 # The number of worker processes for handling requests.
+      WORKER_TIMEOUT: 180 # Workers silent for more than this many seconds are killed and restarted. default 180s
+      # DB_URL: ${DB_URL:-sqlite:///db.sqlite3} # If this parameter is not set, the built-in Sqlite will be used by default. It should be noted that if you do not connect to an external database, the data will be lost after the container is destroyed.
+      DJANGO_SUPERUSER_USERNAME: admin # default superuser name
+      DJANGO_SUPERUSER_PASSWORD: password # default superuser password
+      DJANGO_SUPERUSER_EMAIL: admin@example.com # default superuser email
+      ACCOUNT_EMAIL_VERIFICATION: none # Determines the e-mail verification method during signup – choose one of "none", "optional", or "mandatory". Default is "optional". If you don't need to verify the email, you can set it to "none".
+    restart: on-failure
+
+  web-server:
+    image: nmfretz/chatgpt-ui-web-server:v2.5.1@sha256:d716783148fbacaa20515b5252b54ff00204f10b793b93170d175c56b47ba874
+    environment:
+      BACKEND_URL: http://wsgi-server:8000
+    depends_on:
+      - wsgi-server
+    restart: on-failure
