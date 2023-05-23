@@ -23,7 +23,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/assets:/opt/data/assets
     environment:
-      - PENPOT_FLAGS=enable-registration enable-login-with-password disable-email-verification disable-smtp enable-prepl-server
+      - PENPOT_FLAGS=enable-registration enable-login-with-password disable-email-verification disable-smtp enable-prepl-server disable-secure-session-cookies
       - PENPOT_PUBLIC_URI=${DEVICE_DOMAIN_NAME}:10103
       - PENPOT_DATABASE_URI=postgresql://penpot-postgres/penpot
       - PENPOT_DATABASE_USERNAME=penpot
