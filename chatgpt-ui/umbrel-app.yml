@@ -1,7 +1,7 @@
 manifestVersion: 1
 id: chatgpt-ui
 category: Productivity
-name: ChatGPT AI
+name: ChatGPT UI
 version: "2.5.5"
 tagline: An unofficial client for ChatGPT
 description: >-
