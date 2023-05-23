@@ -44,7 +44,7 @@ services:
     restart: on-failure
 
   postgres:
-    image: postgres:15:sha256:546445ad21cb5893c0997080b831ee45945e798c4359270e16413c8bd93575db
+    image: postgres:15-bullseye:sha256:546445ad21cb5893c0997080b831ee45945e798c4359270e16413c8bd93575db
     # user: "1000:1000"
     stop_signal: SIGINT
     volumes:
