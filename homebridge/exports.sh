@@ -1,0 +1,1 @@
+export APP_HOMEBRIDGE_IP="10.21.21.21"
