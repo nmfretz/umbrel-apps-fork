@@ -11,7 +11,7 @@ website: https://github.com/WongSaang/chatgpt-ui
 dependencies: []
 repo: https://github.com/WongSaang/chatgpt-ui
 support: https://github.com/WongSaang/chatgpt-ui/issues
-port: 10103
+port: 9000
 gallery:
   - 1.jpg
   - 2.jpg
