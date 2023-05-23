@@ -61,5 +61,3 @@ services:
     image: redis:7@sha256:45bfd95117a171ff9c1b5304bdae80a7a61eb5bbf0793d6a86c9078526ad88fa
     user: "1000:1000"
     restart: on-failure
-    volumes:
-      - ${APP_DATA_DIR}/data/redis:/data
