@@ -3,7 +3,7 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: $APP_HOMEBRIDGE_IP
+      APP_HOST: ${$DEVICE_DOMAIN_NAME}
       APP_PORT: 8581
       PROXY_AUTH_ADD: "false"
 
@@ -13,6 +13,3 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/homebridge:/homebridge
     restart: on-failure
-    networks:
-      default:
-        ipv4_address: $APP_HOMEBRIDGE_IP
