@@ -5,6 +5,7 @@ services:
     environment:
       APP_HOST: penpot_penpot-frontend_1
       APP_PORT: 80
+      PROXY_AUTH_WHITELIST: "/api/*"
 
   penpot-frontend:
     image: penpotapp/frontend:1.18.3@sha256:9cea5dfeceed55533a3aacf3acf65a833bc7da3fd30c7c2e9c1acddcc7d4b7a1
