@@ -24,10 +24,10 @@ services:
     environment:
       - PENPOT_FLAGS=enable-registration enable-login-with-password disable-email-verification disable-smtp enable-prepl-server
       - PENPOT_PUBLIC_URI=${DEVICE_DOMAIN_NAME}:9001
-      - PENPOT_DATABASE_URI=postgresql://penpot-postgres/penpot
+      - PENPOT_DATABASE_URI=postgresql://postgres/penpot
       - PENPOT_DATABASE_USERNAME=penpot
       - PENPOT_DATABASE_PASSWORD=penpot
-      - PENPOT_REDIS_URI=redis://penpot-redis/0
+      - PENPOT_REDIS_URI=redis://redis/0
       - PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
       - PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
       - PENPOT_TELEMETRY_ENABLED=false
@@ -40,7 +40,7 @@ services:
     image: penpotapp/exporter:1.18.3@sha256:c5daee8f7b966f91aaee0a286956ea1859b6d3a77a62da9359ed454ed4dc196b
     environment:
       - PENPOT_PUBLIC_URI=http://web
-      - PENPOT_REDIS_URI=redis://penpot-redis/0
+      - PENPOT_REDIS_URI=redis://redis/0
     restart: on-failure
 
   postgres:
