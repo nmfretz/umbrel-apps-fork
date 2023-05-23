@@ -46,7 +46,7 @@ services:
 
   penpot-postgres:
     image: postgres:15@sha256:546445ad21cb5893c0997080b831ee45945e798c4359270e16413c8bd93575db
-    # user: "1000:1000"
+    user: "1000:1000"
     stop_signal: SIGINT
     volumes:
       - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
@@ -59,7 +59,7 @@ services:
 
   penpot-redis:
     image: redis:7@sha256:45bfd95117a171ff9c1b5304bdae80a7a61eb5bbf0793d6a86c9078526ad88fa
-    # user: "1000:1000"
+    user: "1000:1000"
     restart: on-failure
     volumes:
       - ${APP_DATA_DIR}/data/redis:/data
