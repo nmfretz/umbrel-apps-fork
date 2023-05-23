@@ -13,8 +13,8 @@ services:
     environment:
       - PENPOT_FLAGS=enable-registration enable-login-with-password
     depends_on:
-      - penpot-backend
-      - penpot-exporter
+      - backend
+      - exporter
     restart: on-failure
 
   backend:
@@ -32,8 +32,8 @@ services:
       - PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
       - PENPOT_TELEMETRY_ENABLED=false
     depends_on:
-      - penpot-postgres
-      - penpot-redis
+      - postgres
+      - redis
     restart: on-failure
 
   exporter:
