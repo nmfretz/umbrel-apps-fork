@@ -3,7 +3,7 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: "umbrel-2.local"
+      APP_HOST: ${DEVICE_DOMAIN_NAME}
       APP_PORT: 8581
       PROXY_AUTH_ADD: "false"
 

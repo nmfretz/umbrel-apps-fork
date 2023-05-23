@@ -11,7 +11,7 @@ website: https://homebridge.io/
 dependencies: []
 repo: https://github.com/homebridge/homebridge
 support: https://github.com/homebridge/homebridge/issues
-port: 8581
+port: 8582
 gallery:
   - 1.jpg
   - 2.jpg
