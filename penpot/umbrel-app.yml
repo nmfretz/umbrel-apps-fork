@@ -12,7 +12,7 @@ website: https://penpot.app/
 dependencies: []
 repo: https://github.com/penpot/penpot
 support: https://github.com/penpot/penpot/discussions
-port: 9001
+port: 10103
 gallery:
   - 1.jpg
   - 2.jpg
