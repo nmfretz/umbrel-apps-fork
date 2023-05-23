@@ -36,7 +36,7 @@ services:
       - penpot-redis
     restart: on-failure
 
-  exporter:
+  penpot-exporter:
     image: penpotapp/exporter:1.18.3@sha256:c5daee8f7b966f91aaee0a286956ea1859b6d3a77a62da9359ed454ed4dc196b
     environment:
       - PENPOT_PUBLIC_URI=http://penpot-frontend
