@@ -3,9 +3,10 @@ id: homebridge
 category: Automation
 name: Homebridge
 version: "2023-01-08"
-tagline: todo
+tagline: "HomeKit support for the impatient"
 description: >-
-  Todo
+  Homebridge allows you to integrate with smart home devices that do not natively support HomeKit.
+  There are over 2,000 Homebridge plugins supporting thousands of different smart accessories.
 developer: Homebridge
 website: https://homebridge.io/
 dependencies: []
