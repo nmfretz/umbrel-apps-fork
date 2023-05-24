@@ -11,8 +11,6 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
-      MODE: "standalone"
-      TELEMETRY: "false"
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
     restart: on-failure
