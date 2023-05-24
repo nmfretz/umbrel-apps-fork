@@ -1,0 +1,24 @@
+manifestVersion: 1
+id: libre-speed
+category: Networking
+name: LibreSpeed
+version: "0.0.1"
+tagline: Free and open source speedtest
+description: >-
+  Free and Open Source Speedtest. No Flash, No Java, No Websocket, No Bullshit.
+developer: LibreSpeed
+website: https://librespeed.org/
+dependencies: []
+repo: https://github.com/librespeed/speedtest
+support: https://github.com/librespeed/speedtest/issues
+port: 3009
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+submitter: Umbrel
+submission: https://github.com/getumbrel/umbrel-apps/
