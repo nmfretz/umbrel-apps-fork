@@ -3,9 +3,11 @@ id: penpot
 category: Development
 name: Penpot
 version: "1.18.3"
-tagline: todo
+tagline: Design and prototyping platform
 description: >-
-  TODO: add
+  Penpot is the first Open Source design and prototyping platform for product teams. Non dependent on operating systems,
+  Penpot is web based and works with open standards (SVG). Penpot invites designers all over the world to fall in love with open source
+  while getting developers excited about the design process in return.
 releaseNotes: ""
 developer: Penpot
 website: https://penpot.app/
