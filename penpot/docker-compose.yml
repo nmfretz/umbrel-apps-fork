@@ -10,6 +10,7 @@ services:
 
   penpot-frontend:
     image: penpotapp/frontend:1.18.3@sha256:9cea5dfeceed55533a3aacf3acf65a833bc7da3fd30c7c2e9c1acddcc7d4b7a1
+    user: "1000:1000"
     volumes:
       - ${APP_DATA_DIR}/data/assets:/opt/data/assets
     environment:
@@ -21,13 +22,12 @@ services:
 
   penpot-backend:
     image: penpotapp/backend:1.18.3@sha256:a744cc44f8305fb9be2a878ce2e29c7d370d370f0ec39a3e623c70014b7387c9
+    # user 1000:1000 to avoid permission issues when importing libraries and templates
     user: "1000:1000"
     volumes:
       - ${APP_DATA_DIR}/data/assets:/opt/data/assets
     environment:
       - PENPOT_FLAGS=enable-registration enable-login-with-password disable-email-verification disable-smtp enable-prepl-server disable-secure-session-cookies
-      # see if we can get rid of this
-      # - PENPOT_PUBLIC_URI=${DEVICE_DOMAIN_NAME}:10103
       - PENPOT_DATABASE_URI=postgresql://penpot-postgres/penpot
       - PENPOT_DATABASE_USERNAME=penpot
       - PENPOT_DATABASE_PASSWORD=penpot
@@ -42,6 +42,7 @@ services:
 
   penpot-exporter:
     image: penpotapp/exporter:1.18.3@sha256:c5daee8f7b966f91aaee0a286956ea1859b6d3a77a62da9359ed454ed4dc196b
+    user: "1000:1000"
     environment:
       - PENPOT_PUBLIC_URI=http://penpot-frontend
       - PENPOT_REDIS_URI=redis://penpot-redis/0
