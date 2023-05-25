@@ -13,7 +13,7 @@ description: >-
   
   - Ring
   
-  -Nest & Nest Cameras
+  - Nest & Nest Cameras
   
   - TP-Link Kasa Smart Home
   
@@ -23,7 +23,7 @@ description: >-
   
   - myQ
   
-  -UniFi Protect
+  - UniFi Protect
 developer: Homebridge
 website: https://homebridge.io/
 dependencies: []
