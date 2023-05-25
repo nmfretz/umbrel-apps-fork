@@ -1,11 +1,11 @@
 manifestVersion: 1
-id: libre-speed
+id: librespeed
 category: Networking
 name: LibreSpeed
 version: "0.0.1"
 tagline: Free and open source speedtest
 description: >-
-  Free and Open Source Speedtest. No Flash, No Java, No Websocket, No Bullshit.
+  Free and open source speedtest. No Flash, No Java, No Websocket, No Bullshit.
 developer: LibreSpeed
 website: https://librespeed.org/
 dependencies: []
