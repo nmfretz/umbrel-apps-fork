@@ -6,7 +6,7 @@ version: "2023-01-08"
 tagline: "HomeKit support for the impatient"
 description: >-
   Homebridge allows you to integrate with smart home devices that do not natively support HomeKit.
-  There are over 2,000 Homebridge plugins supporting thousands of different smart accessories.
+  There are over 2000 Homebridge plugins supporting thousands of different smart accessories.
 developer: Homebridge
 website: https://homebridge.io/
 dependencies: []
