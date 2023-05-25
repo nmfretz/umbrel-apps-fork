@@ -2,6 +2,7 @@ manifestVersion: 1
 id: chatpad-ai
 category: Productivity
 name: Chatpad AI
+# using first 6 characters of commit hash as version number (docker image tag uses full commit hash)
 version: "e60272"
 tagline: Premium quality UI for ChatGPT
 description: >-
