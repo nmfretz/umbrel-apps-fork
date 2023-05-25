@@ -21,6 +21,7 @@ services:
 
   penpot-backend:
     image: penpotapp/backend:1.18.3@sha256:a744cc44f8305fb9be2a878ce2e29c7d370d370f0ec39a3e623c70014b7387c9
+    USER: "1000:1000"
     volumes:
       - ${APP_DATA_DIR}/data/assets:/opt/data/assets
     environment:
