@@ -13,7 +13,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/assets:/opt/data/assets
     environment:
-      - PENPOT_FLAGS=enable-registration enable-login-with-password
+      - PENPOT_FLAGS=disable-registration disable-login-with-password
     depends_on:
       - penpot-backend
       - penpot-exporter
