@@ -9,11 +9,11 @@ services:
 
   server:
     image: seafileltd/seafile-mc:10.0.1@sha256:019baceee1a55d94024ec6b44409b4c755fb49786ddb241c4c187a6762c23453
-    user: "1000:1000"
     volumes:
       - ${APP_DATA_DIR}/data/shared:/shared
     environment:
-      - NON_ROOT=true
+      # can run as non-root user "seafile", but cannot run as user 1000:1000
+      # - NON_ROOT=true
       - DB_HOST=db
       - DB_ROOT_PASSWD=db_dev  # Requested, the value shuold be root's password of MySQL service.
       - SEAFILE_ADMIN_EMAIL=me@example.com # Specifies Seafile admin user, default is 'me@example.com'.
