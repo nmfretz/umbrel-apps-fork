@@ -10,13 +10,13 @@ services:
   web_recipes:
     image: vabene1111/recipes:1.4.12@sha256:cd6b2a3ff9190a972e1ff16ba9246dce57c5b5b670b9772c07a408802549947e
     environment:
-      SECRET_KEY=random-text-here
-      DB_ENGINE=django.db.backends.postgresql
-      POSTGRES_HOST=db_recipes
-      POSTGRES_PORT=5432
-      POSTGRES_USER=djangouser
-      POSTGRES_PASSWORD=password
-      POSTGRES_DB=djangodb
+      - SECRET_KEY=random-text-here
+      - DB_ENGINE=django.db.backends.postgresql
+      - POSTGRES_HOST=db_recipes
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=djangouser
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=djangodb
     volumes:
       - ${APP_DATA_DIR}/data/staticfiles:/opt/recipes/staticfiles
       - ${APP_DATA_DIR}/data/nginx_config:/opt/recipes/nginx/conf.d
