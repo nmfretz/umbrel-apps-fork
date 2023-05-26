@@ -29,12 +29,12 @@ services:
     image: postgres:11-alpine@sha256:45800340cfea631af4c8c3870e8d7f1ae888907e39def41a3b7608ff8f16b28c
     environment:
       # check env template
-      DB_ENGINE=django.db.backends.postgresql
-      POSTGRES_HOST=db_recipes
-      POSTGRES_PORT=5432
-      POSTGRES_USER=djangouser
-      POSTGRES_PASSWORD=password
-      POSTGRES_DB=djangodb
+      - DB_ENGINE=django.db.backends.postgresql
+      - POSTGRES_HOST=db_recipes
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=djangouser
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=djangodb
     volumes:
       - ${APP_DATA_DIR}/data/postgresql:/var/lib/postgresql/data
     restart: on-failure
