@@ -12,6 +12,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/shared:/shared
     environment:
+      - NON_ROOT=true
       - DB_HOST=db
       - DB_ROOT_PASSWD=db_dev  # Requested, the value shuold be root's password of MySQL service.
       - SEAFILE_ADMIN_EMAIL=me@example.com # Specifies Seafile admin user, default is 'me@example.com'.
