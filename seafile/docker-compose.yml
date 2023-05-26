@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: seafile_server_1
+      APP_PORT: 80
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    image: seafileltd/seafile-mc:10.0.1@sha256:019baceee1a55d94024ec6b44409b4c755fb49786ddb241c4c187a6762c23453
+    volumes:
+      - ${APP_DATA_DIR}/data/shared:/shared
+    environment:
+      - DB_HOST=db
+      # - DB_ROOT_PASSWD=db_dev  # Requested, the value shuold be root's password of MySQL service.
+      - SEAFILE_ADMIN_EMAIL=me@example.com # Specifies Seafile admin user, default is 'me@example.com'.
+      - SEAFILE_ADMIN_PASSWORD=asecret     # Specifies Seafile admin password, default is 'asecret'.
+      - SEAFILE_SERVER_LETSENCRYPT=false   # Whether to use https or not.
+    depends_on:
+      - db
+      - memcached
+    restart: on-failure
+
+  memcached:
+    image: memcached:1.6.18@sha256:4ab520657d9919221f752771bb013d632c9b39cea9dfae9162244b2e39885bcd
+    entrypoint: memcached -m 256
+    restart: on-failure
+
+  db:
+    image: mariadb:10.6@sha256:37e9f7e3cea0096f7fba9d2a77cf0ac926c830e8931d1679da3bcd8fb8989d47
+    volumes:
+      - ${APP_DATA_DIR}/data/db:/var/lib/mysql
+    environment:
+      # - MYSQL_ROOT_PASSWORD=db_dev  # Requested, set the root's password of MySQL service.
+      - MYSQL_LOG_CONSOLE=true
+    restart: on-failure
