@@ -13,7 +13,7 @@ services:
       - ${APP_DATA_DIR}/data/shared:/shared
     environment:
       - DB_HOST=db
-      - DB_ROOT_PASSWD=db_dev  # Requested, the value shuold be root's password of MySQL service.
+      - DB_ROOT_PASSWD=dbdev  # Requested, the value shuold be root's password of MySQL service.
       - SEAFILE_ADMIN_EMAIL=me@example.com # Specifies Seafile admin user, default is 'me@example.com'.
       - SEAFILE_ADMIN_PASSWORD=asecret     # Specifies Seafile admin password, default is 'asecret'.
       - SEAFILE_SERVER_LETSENCRYPT=false   # Whether to use https or not.
@@ -32,6 +32,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=db_dev  # Requested, set the root's password of MySQL service.
+      - MYSQL_ROOT_PASSWORD=dbdev  # Requested, set the root's password of MySQL service.
       - MYSQL_LOG_CONSOLE=true
     restart: on-failure
