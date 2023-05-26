@@ -1,0 +1,24 @@
+manifestVersion: 1
+id: tandoor-recipes
+category: Productivity
+name: Tandoor Recipes
+version: "1.4.12"
+tagline: Manage your ever growing recipe collection
+description: >-
+  TODO: add description
+developer: todo
+website: https://docs.mealie.io/
+dependencies: []
+repo: https://github.com/hay-kot/mealie
+support: https://github.com/hay-kot/mealie/issues
+port: 9926
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+submitter: Umbrel
+submission: https://github.com/getumbrel/umbrel-apps/
