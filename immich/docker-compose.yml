@@ -13,19 +13,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/upload:/usr/src/app/upload
     environment:
-      NODE_ENV: production
-      DB_HOSTNAME: immich_postgres_1
-      DB_USERNAME: ${APP_IMMICH_DB_USERNAME}
-      DB_PASSWORD: ${APP_IMMICH_DB_PASSWORD}
-      DB_DATABASE_NAME: ${APP_IMMICH_DB_DATABASE_NAME}
-      REDIS_HOSTNAME: immich_redis_1
-      LOG_LEVEL: ${APP_IMMICH_LOG_LEVEL}
-      JWT_SECRET: ${APP_SEED}
-      DISABLE_REVERSE_GEOCODING: ${APP_IMMICH_DISABLE_REVERSE_GEOCODING}
-      REVERSE_GEOCODING_PRECISION: ${APP_IMMICH_REVERSE_GEOCODING_PRECISION}
-      PUBLIC_LOGIN_PAGE_MESSAGE: ${APP_IMMICH_PUBLIC_LOGIN_PAGE_MESSAGE}
-      TYPESENSE_API_KEY: ${APP_IMMICH_TYPESENSE_API_KEY}
-      IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
+      <<: *env
     depends_on:
       - redis
       - postgres
@@ -41,19 +29,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/upload:/usr/src/app/upload
     environment:
-      NODE_ENV: production
-      DB_HOSTNAME: immich_postgres_1
-      DB_USERNAME: ${APP_IMMICH_DB_USERNAME}
-      DB_PASSWORD: ${APP_IMMICH_DB_PASSWORD}
-      DB_DATABASE_NAME: ${APP_IMMICH_DB_DATABASE_NAME}
-      REDIS_HOSTNAME: immich_redis_1
-      LOG_LEVEL: ${APP_IMMICH_LOG_LEVEL}
-      JWT_SECRET: ${APP_SEED}
-      DISABLE_REVERSE_GEOCODING: ${APP_IMMICH_DISABLE_REVERSE_GEOCODING}
-      REVERSE_GEOCODING_PRECISION: ${APP_IMMICH_REVERSE_GEOCODING_PRECISION}
-      PUBLIC_LOGIN_PAGE_MESSAGE: ${APP_IMMICH_PUBLIC_LOGIN_PAGE_MESSAGE}
-      TYPESENSE_API_KEY: ${APP_IMMICH_TYPESENSE_API_KEY}
-      IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
+      <<: *env
     depends_on:
       - redis
       - postgres
@@ -66,17 +42,7 @@ services:
       - ${APP_DATA_DIR}/data/upload:/usr/src/app/upload
       - ${APP_DATA_DIR}/data/model-cache:/cache
     environment:
-      NODE_ENV: production
-      DB_HOSTNAME: immich_postgres_1
-      DB_USERNAME: ${APP_IMMICH_DB_USERNAME}
-      DB_PASSWORD: ${APP_IMMICH_DB_PASSWORD}
-      DB_DATABASE_NAME: ${APP_IMMICH_DB_DATABASE_NAME}
-      REDIS_HOSTNAME: immich_redis_1
-      LOG_LEVEL: ${APP_IMMICH_LOG_LEVEL}
-      JWT_SECRET: ${APP_SEED}
-      DISABLE_REVERSE_GEOCODING: ${APP_IMMICH_DISABLE_REVERSE_GEOCODING}
-      REVERSE_GEOCODING_PRECISION: ${APP_IMMICH_REVERSE_GEOCODING_PRECISION}
-      PUBLIC_LOGIN_PAGE_MESSAGE: ${APP_IMMICH_PUBLIC_LOGIN_PAGE_MESSAGE}
+      <<: *env
     depends_on:
       - postgres
     restart: on-failure
@@ -85,24 +51,13 @@ services:
     image: altran1502/immich-web:v1.59.1@sha256:f7d58ca0d8725ede4ceb67a640336b8189381878377d150065acffc94dbfb5c9
     entrypoint: ["/bin/sh", "./entrypoint.sh"]
     environment:
-      DB_HOSTNAME: immich_postgres_1
-      DB_USERNAME: ${APP_IMMICH_DB_USERNAME}
-      DB_PASSWORD: ${APP_IMMICH_DB_PASSWORD}
-      DB_DATABASE_NAME: ${APP_IMMICH_DB_DATABASE_NAME}
-      REDIS_HOSTNAME: immich_redis_1
-      LOG_LEVEL: ${APP_IMMICH_LOG_LEVEL}
-      JWT_SECRET: ${APP_SEED}
-      DISABLE_REVERSE_GEOCODING: ${APP_IMMICH_DISABLE_REVERSE_GEOCODING}
-      REVERSE_GEOCODING_PRECISION: ${APP_IMMICH_REVERSE_GEOCODING_PRECISION}
-      PUBLIC_LOGIN_PAGE_MESSAGE: ${APP_IMMICH_PUBLIC_LOGIN_PAGE_MESSAGE}
-      PUBLIC_IMMICH_SERVER_URL: "http://immich_server_1:3001"
-      IMMICH_SERVER_URL: "http://immich_server_1:3001"
+      <<: *env
     restart: on-failure
 
   typesense:
     image: typesense/typesense:0.24.0@sha256:3cc1251f09ef6c75a5b1f2751c04e7265c770c0f2b69cba1f9a9f20da57cfa28
     environment:
-      TYPESENSE_API_KEY: ${APP_IMMICH_TYPESENSE_API_KEY}
+      TYPESENSE_API_KEY: "any-text-for-self-hosted-typesense"
       TYPESENSE_DATA_DIR: "/data"
     volumes:
       - ${APP_DATA_DIR}/data/tsdata:/data
@@ -113,7 +68,6 @@ services:
     environment:
       IMMICH_WEB_URL: "http://immich_web_1:3000"
       IMMICH_SERVER_URL: "http://immich_server_1:3001"
-      IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
     depends_on:
       - server
     restart: on-failure
@@ -129,6 +83,7 @@ services:
     image: postgres:14-bullseye@sha256:135c62a8134dcef829a1e4f5568bfae44bcfa2c75659ff948f43c71964366aa4
     user: "1000:1000"
     environment:
+      <<: *env
       POSTGRES_USER: ${APP_IMMICH_DB_USERNAME}
       POSTGRES_PASSWORD: ${APP_IMMICH_DB_PASSWORD}
       POSTGRES_DB: ${APP_IMMICH_DB_DATABASE_NAME}
@@ -136,3 +91,20 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
     restart: on-failure
+
+x-environment: &env
+  NODE_ENV: production
+  DB_HOSTNAME: immich_postgres_1
+  DB_USERNAME: immich
+  DB_PASSWORD: moneyprintergobrrr
+  DB_DATABASE_NAME: immich
+  REDIS_HOSTNAME: immich_redis_1
+  LOG_LEVEL: simple
+  JWT_SECRET: ${APP_SEED}
+  DISABLE_REVERSE_GEOCODING: false
+  REVERSE_GEOCODING_PRECISION: 3
+  PUBLIC_LOGIN_PAGE_MESSAGE: ""
+  TYPESENSE_API_KEY: any-text-for-self-hosted-typesense
+  IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
+  PUBLIC_IMMICH_SERVER_URL: "http://immich_server_1:3001"
+  IMMICH_SERVER_URL: "http://immich_server_1:3001"
