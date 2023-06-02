@@ -12,10 +12,10 @@ x-environment: &env
   DISABLE_REVERSE_GEOCODING: "false"
   REVERSE_GEOCODING_PRECISION: "3"
   PUBLIC_LOGIN_PAGE_MESSAGE: ""
-  TYPESENSE_API_KEY: "any-text-for-self-hosted-typesense"
-  IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
-  PUBLIC_IMMICH_SERVER_URL: "http://immich_server_1:3001"
+  TYPESENSE_API_KEY: &typesense_api_key "any-text-for-self-hosted-typesense"
+  IMMICH_WEB_URL: "http://immich_web_1:3000"
   IMMICH_SERVER_URL: "http://immich_server_1:3001"
+  IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
 
 services:
   app_proxy:
@@ -74,7 +74,7 @@ services:
   typesense:
     image: typesense/typesense:0.24.0@sha256:3cc1251f09ef6c75a5b1f2751c04e7265c770c0f2b69cba1f9a9f20da57cfa28
     environment:
-      TYPESENSE_API_KEY: "any-text-for-self-hosted-typesense"
+      TYPESENSE_API_KEY: *typesense_api_key
       TYPESENSE_DATA_DIR: "/data"
     volumes:
       - ${APP_DATA_DIR}/data/tsdata:/data
@@ -83,8 +83,8 @@ services:
   proxy:
     image: altran1502/immich-proxy:v1.59.1@sha256:5e1b1b35cb8f63a9af896790871387703b1c0c8d9b308ab1290b8e615f0f84d2
     environment:
-      IMMICH_WEB_URL: "http://immich_web_1:3000"
       IMMICH_SERVER_URL: "http://immich_server_1:3001"
+      IMMICH_WEB_URL: "http://immich_web_1:3000"
     depends_on:
       - server
     restart: on-failure
