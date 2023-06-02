@@ -1,18 +1,18 @@
 version: "3.7"
 
 x-environment: &env
-  NODE_ENV: production
-  DB_HOSTNAME: immich_postgres_1
-  DB_USERNAME: immich
-  DB_PASSWORD: moneyprintergobrrr
-  DB_DATABASE_NAME: immich
-  REDIS_HOSTNAME: immich_redis_1
-  LOG_LEVEL: simple
+  NODE_ENV: "production"
+  DB_HOSTNAME: "immich_postgres_1"
+  DB_USERNAME: "immich"
+  DB_PASSWORD: "moneyprintergobrrr"
+  DB_DATABASE_NAME: "immich"
+  REDIS_HOSTNAME: "immich_redis_1"
+  LOG_LEVEL: "simple"
   JWT_SECRET: ${APP_SEED}
-  DISABLE_REVERSE_GEOCODING: false
-  REVERSE_GEOCODING_PRECISION: 3
+  DISABLE_REVERSE_GEOCODING: "false"
+  REVERSE_GEOCODING_PRECISION: "3"
   PUBLIC_LOGIN_PAGE_MESSAGE: ""
-  TYPESENSE_API_KEY: any-text-for-self-hosted-typesense
+  TYPESENSE_API_KEY: "any-text-for-self-hosted-typesense"
   IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
   PUBLIC_IMMICH_SERVER_URL: "http://immich_server_1:3001"
   IMMICH_SERVER_URL: "http://immich_server_1:3001"
