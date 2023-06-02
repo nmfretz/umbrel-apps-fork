@@ -3,9 +3,9 @@ version: "3.7"
 x-environment: &env
   NODE_ENV: "production"
   DB_HOSTNAME: "immich_postgres_1"
-  DB_USERNAME: "immich"
-  DB_PASSWORD: "moneyprintergobrrr"
-  DB_DATABASE_NAME: "immich"
+  DB_USERNAME: &db_username "immich"
+  DB_PASSWORD: &db_password "moneyprintergobrrr"
+  DB_DATABASE_NAME: &db_database_name "immich"
   REDIS_HOSTNAME: "immich_redis_1"
   LOG_LEVEL: "simple"
   JWT_SECRET: ${APP_SEED}
@@ -13,8 +13,8 @@ x-environment: &env
   REVERSE_GEOCODING_PRECISION: "3"
   PUBLIC_LOGIN_PAGE_MESSAGE: ""
   TYPESENSE_API_KEY: &typesense_api_key "any-text-for-self-hosted-typesense"
-  IMMICH_WEB_URL: "http://immich_web_1:3000"
-  IMMICH_SERVER_URL: "http://immich_server_1:3001"
+  IMMICH_SERVER_URL: &immich_server_url "http://immich_server_1:3001"
+  IMMICH_WEB_URL: &immich_web_url "http://immich_web_1:3000"
   IMMICH_MACHINE_LEARNING_URL: "http://immich_machine-learning_1:3003"
 
 services:
@@ -83,8 +83,8 @@ services:
   proxy:
     image: altran1502/immich-proxy:v1.59.1@sha256:5e1b1b35cb8f63a9af896790871387703b1c0c8d9b308ab1290b8e615f0f84d2
     environment:
-      IMMICH_SERVER_URL: "http://immich_server_1:3001"
-      IMMICH_WEB_URL: "http://immich_web_1:3000"
+      IMMICH_SERVER_URL: *immich_server_url
+      IMMICH_WEB_URL: *immich_web_url
     depends_on:
       - server
     restart: on-failure
@@ -101,9 +101,9 @@ services:
     user: "1000:1000"
     environment:
       <<: *env
-      POSTGRES_USER: ${APP_IMMICH_DB_USERNAME}
-      POSTGRES_PASSWORD: ${APP_IMMICH_DB_PASSWORD}
-      POSTGRES_DB: ${APP_IMMICH_DB_DATABASE_NAME}
+      POSTGRES_PASSWORD: *db_password
+      POSTGRES_USER: *db_username
+      POSTGRES_DB: *db_database_name
       PG_DATA: /var/lib/postgresql/data
     volumes:
       - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
