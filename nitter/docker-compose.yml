@@ -5,8 +5,8 @@ services:
     environment:
       APP_HOST: nitter_web_1
       APP_PORT: 8080
-      APP_PROXY_AUTH: "false"
-      PROXY_AUTH_WHITELIST: "/search/*"
+      # APP_PROXY_AUTH: "false"
+      PROXY_AUTH_WHITELIST: "/search"
 
   web:
     # Official Nim image used as base image for nitter doesn't offer Arm variant so using a custom image w/ patch for umbrel
