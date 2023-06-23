@@ -7,7 +7,7 @@ category: finance
 version: "0.1.0"
 port: 58000
 description: >-
-  Connect your LND node over Nostr. Zap directly from within supported apps like Damus & Amethyst.
+  Connect your LND node over Nostr to zap directly from within supported apps like Damus & Amethyst.
 
 
   🛠️ INSTRUCTIONS
