@@ -128,11 +128,16 @@ fi
 
 {
 	# Migrate settings for app updates differently to fresh installs
-	BITCOIN_INSTALL_EXISTS="false"
+	BITCOIN_FRESH_INSTALL="${EXPORTS_APP_DIR}/fresh-install"
 	BITCOIN_DATA_DIR="${EXPORTS_APP_DIR}/data/bitcoin"
-	if [[ -d "${BITCOIN_DATA_DIR}/blocks" ]] || [[ -d "${BITCOIN_DATA_DIR}/testnet3/blocks" ]] || [[ -d "${BITCOIN_DATA_DIR}/regtest/blocks" ]]
+
+	# if fresh-install file does not exist, check if blocks directory DOES NOT exists
+	if [[ ! -f "${BITCOIN_FRESH_INSTALL}" ]]
 	then
-	BITCOIN_INSTALL_EXISTS="true"
+		if [[ ! -d "${BITCOIN_DATA_DIR}/blocks" ]] && [[ ! -d "${BITCOIN_DATA_DIR}/testnet3/blocks" ]] && [[ ! -d "${BITCOIN_DATA_DIR}/regtest/blocks" ]]
+		then
+			touch "${BITCOIN_FRESH_INSTALL}"
+		fi
 	fi
 
 	APP_CONFIG_EXISTS="false"
@@ -141,7 +146,7 @@ fi
 	APP_CONFIG_EXISTS="true"
 	fi
 
-	if [[ "${BITCOIN_INSTALL_EXISTS}" = "true" ]] && [[ "${APP_CONFIG_EXISTS}" = "false" ]]
+	if [[ ! -f "${BITCOIN_FRESH_INSTALL}" ]] && [[ "${APP_CONFIG_EXISTS}" = "false" ]]
 	then
 		# This app is not a fresh install, it's being updated, so preserve existing clearnet over Tor setting
 		export BITCOIN_INITIALIZE_WITH_CLEARNET_OVER_TOR="true"
