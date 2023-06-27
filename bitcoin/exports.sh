@@ -134,7 +134,7 @@ fi
 	# If no blocks directory exists, we write out a file to indicate that this is a fresh install.
 	# This gets around the issue of the pre-start hook starting up the bitcoind container early for Tor HS creation
 	# and creating the blocks directory.
-	if [[ ! -f "${IS_POST_ADVANCED_SETTINGS_INSTALL}" ]]
+	if [[ ! -f "${IS_POST_ADVANCED_SETTINGS_INSTALL_FILE_PATH}" ]]
 	then
 		if [[ ! -d "${BITCOIN_DATA_DIR}/blocks" ]] && [[ ! -d "${BITCOIN_DATA_DIR}/testnet3/blocks" ]] && [[ ! -d "${BITCOIN_DATA_DIR}/regtest/blocks" ]]
 		then
