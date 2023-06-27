@@ -128,15 +128,17 @@ fi
 
 {
 	# Migrate settings for app updates differently to fresh installs
-	BITCOIN_FRESH_INSTALL="${EXPORTS_APP_DIR}/fresh-install"
+	IS_POST_ADVANCED_SETTINGS_INSTALL_FILE_PATH="${EXPORTS_APP_DIR}/IS_POST_ADVANCED_SETTINGS_INSTALL"
 	BITCOIN_DATA_DIR="${EXPORTS_APP_DIR}/data/bitcoin"
 
-	# if fresh-install file does not exist, check if blocks directory DOES NOT exists
-	if [[ ! -f "${BITCOIN_FRESH_INSTALL}" ]]
+	# If no blocks directory exists, we write out a file to indicate that this is a fresh install.
+	# This gets around the issue of the pre-start hook starting up the bitcoind container early for Tor HS creation
+	# and creating the blocks directory.
+	if [[ ! -f "${IS_POST_ADVANCED_SETTINGS_INSTALL}" ]]
 	then
 		if [[ ! -d "${BITCOIN_DATA_DIR}/blocks" ]] && [[ ! -d "${BITCOIN_DATA_DIR}/testnet3/blocks" ]] && [[ ! -d "${BITCOIN_DATA_DIR}/regtest/blocks" ]]
 		then
-			touch "${BITCOIN_FRESH_INSTALL}"
+			touch "${IS_POST_ADVANCED_SETTINGS_INSTALL_FILE_PATH}"
 		fi
 	fi
 
@@ -146,7 +148,7 @@ fi
 	APP_CONFIG_EXISTS="true"
 	fi
 
-	if [[ ! -f "${BITCOIN_FRESH_INSTALL}" ]] && [[ "${APP_CONFIG_EXISTS}" = "false" ]]
+	if [[ ! -f "${IS_POST_ADVANCED_SETTINGS_INSTALL_FILE_PATH}" ]] && [[ "${APP_CONFIG_EXISTS}" = "false" ]]
 	then
 		# This app is not a fresh install, it's being updated, so preserve existing clearnet over Tor setting
 		export BITCOIN_INITIALIZE_WITH_CLEARNET_OVER_TOR="true"
