@@ -1,14 +1,9 @@
 version: "3.7"
 
 services:
-  app_proxy:
-    environment:
-      APP_HOST: home-assistant_server_1
-      APP_PORT: 8123
-      PROXY_AUTH_ADD: "false"
-
   server:
     image: homeassistant/home-assistant:2023.6@sha256:8e069fcfddbd95c0acff88b9e515e3b208c2a5b4ad801a8f0cb8b55be417fc45
+    network_mode: host
+    # UI at port 8083 instead of the default 8123 (see pre-start hook) to avoid clash with tallycoin-connect.
     volumes:
       - ${APP_DATA_DIR}/data:/config
-      - ${APP_DATA_DIR}/configuration.yaml:/config/configuration.yaml
