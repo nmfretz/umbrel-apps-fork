@@ -33,7 +33,8 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  This update brings Home Assistant to version 2023.6.3, and also enables automatic device discovery and persistence of a user's Home Assistant configuration.
+  This update brings Home Assistant to version 2023.6.3, and also enables automatic device discovery and persistence of a user's configuration.
+
 
   Full 2023.6.3 release notes are available at: https://github.com/home-assistant/core/releases/tag/2023.6.3
 submitter: Umbrel
