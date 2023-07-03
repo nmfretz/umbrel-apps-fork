@@ -1,7 +1,21 @@
 #!/usr/bin/env bash
 
 # This script checks if a pre-host-network version of the app is currently installed and, if it is,
-# deletes the old configuration files and creates a new one with a default configuration and UI port changed to 8083
+# deletes the old configuration files and create a new configuration.yaml with default config + UI port changed to 8083
+# Default automations.yaml, scenes.yaml, scripts.yaml, and secrets.yaml files are created if they do not exist.
+
+create_file_if_not_exists() {
+  local filename=$1
+  local content=$2
+  local file="${HOME_ASSISTANT_CONFIG_DIR}/${filename}"
+  
+  if [[ ! -f "${file}" ]]; then
+    echo "Creating ${filename}"
+    echo -e "${content}" > "${file}"
+  else
+    echo "${filename} already exists"
+  fi
+}
 
 APP_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 HOME_ASSISTANT_CONFIG_DIR="${APP_DIR}/data"
@@ -30,16 +44,39 @@ if [[ -f "${PRE_HOST_NETWORK_CONFIGURATION_YAML}" ]] || [[ -f "${PRE_HOST_NETWOR
     fi
 fi
 
-# Create a new configuration file if it doesn't exist, with a default configuration and UI port changed to 8083
-if [[ ! -f "${HOME_ASSISTANT_CONFIG_DIR}/configuration.yaml" ]]; then
-    echo "Creating configuration.yaml"
-    cat << EOF > "${HOME_ASSISTANT_CONFIG_DIR}/configuration.yaml"
+# Create configuration, automations, scenes, scripts, and secrets files if they do not exist
+
+# default configuration + UI port changed to 8083
+CONFIG_YAML_CONTENT=$(cat << EOF
 # Loads default set of integrations. Do not remove.
 default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Text-to-speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
 
 http:
   server_port: 8083
 EOF
-else
-    echo "configuration.yaml already exists"
-fi
+)
+
+SECRETS_YAML_CONTENT=$(cat << EOF
+# Use this file to store secrets like usernames and passwords.
+# Learn more at https://www.home-assistant.io/docs/configuration/secrets/
+some_password: welcome
+EOF
+)
+
+create_file_if_not_exists "configuration.yaml" "${CONFIG_YAML_CONTENT}"
+create_file_if_not_exists "automations.yaml" "[]"
+create_file_if_not_exists "scenes.yaml" ""
+create_file_if_not_exists "scripts.yaml" ""
+create_file_if_not_exists "secrets.yaml" "${SECRETS_YAML_CONTENT}"
