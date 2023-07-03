@@ -18,16 +18,18 @@ create_file_if_not_exists() {
 
 create_dir_if_not_exists() {
   local dir=$1
-
+  
   if [[ ! -d "${dir}" ]]; then
-    echo "Creating directory ${dir}"
-    mkdir -pv "${dir}"
-    echo "Listing contents of ${dir}"
-    ls -la "${dir}"
+    echo "Creating ${dir}"
+    mkdir -p "${dir}"
+    # Change ownership to root
+    chown root:root "${dir}"
+    echo "Owner of ${dir} changed to root"
   else
-    echo "Directory ${dir} already exists"
+    echo "${dir} already exists"
   fi
 }
+...
 
 APP_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 HOME_ASSISTANT_CONFIG_DIR="${APP_DIR}/data"
