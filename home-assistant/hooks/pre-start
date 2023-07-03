@@ -68,15 +68,7 @@ http:
 EOF
 )
 
-SECRETS_YAML_CONTENT=$(cat << EOF
-# Use this file to store secrets like usernames and passwords.
-# Learn more at https://www.home-assistant.io/docs/configuration/secrets/
-some_password: welcome
-EOF
-)
-
 create_file_if_not_exists "configuration.yaml" "${CONFIG_YAML_CONTENT}"
 create_file_if_not_exists "automations.yaml" "[]"
 create_file_if_not_exists "scenes.yaml" ""
 create_file_if_not_exists "scripts.yaml" ""
-create_file_if_not_exists "secrets.yaml" "${SECRETS_YAML_CONTENT}"
