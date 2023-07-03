@@ -11,7 +11,7 @@ dependencies:
   - lightning
 repo: https://github.com/djbooth007/tallycoin_connect
 support: https://github.com/djbooth007/tallycoin_connect/issues
-port: 8123
+port: 8124
 gallery:
   - 1.jpg
   - 2.jpg
