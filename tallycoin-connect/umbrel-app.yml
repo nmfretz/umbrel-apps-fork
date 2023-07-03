@@ -2,7 +2,7 @@ manifestVersion: 1
 id: tallycoin-connect
 category: bitcoin
 name: Tallycoin Connect
-version: "1.8.0"
+version: "1.8.0-portUpdate1"
 tagline: Crowdfund donations directly to your Umbrel node with Tallycoin.
 description: Tallycoin is a crowdfunding platform with bitcoin and lightning donations. Together with the Tallycoin Connect app, you can receive donations directly to your Umbrel node. Zero fees!
 developer: djbooth007
@@ -19,8 +19,12 @@ gallery:
 path: ""
 deterministicPassword: true
 releaseNotes: >-
-  Added: LNURL and Lightning Address compatibility.
-  
-  Fixed: Mobile view of transaction page.
+  ⚠️ This update changes the port that Tallycoin Connect runs on, from 8123 to 8124. This is to avoid a conflict
+  with the Home Assistant app, which now runs on port 8123.
+
+  If you are curently running both Tallycoin Connect and Home Assistant, please update Tallycoin Connect
+  first, and then update Home Assistant.
+
+  There are no updates to the Tallycoin Connect app itself.
 submitter: d11n
 submission: https://github.com/getumbrel/umbrel/pull/1052
