@@ -16,21 +16,6 @@ create_file_if_not_exists() {
   fi
 }
 
-create_dir_if_not_exists() {
-  local dir=$1
-  
-  if [[ ! -d "${dir}" ]]; then
-    echo "Creating ${dir}"
-    mkdir -p "${dir}"
-    # Change ownership to root
-    chown root:root "${dir}"
-    echo "Owner of ${dir} changed to root"
-  else
-    echo "${dir} already exists"
-  fi
-}
-...
-
 APP_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 HOME_ASSISTANT_CONFIG_DIR="${APP_DIR}/data"
 PRE_HOST_NETWORK_CONFIGURATION_YAML="${APP_DIR}/configuration.yaml"
@@ -58,7 +43,7 @@ if [[ -f "${PRE_HOST_NETWORK_CONFIGURATION_YAML}" ]] || [[ -f "${PRE_HOST_NETWOR
     fi
 fi
 
-# Create configuration, automations, scenes, scripts, and secrets files, as well as empty deps directory, if they do not exist
+# Create configuration, automations, scenes, scripts, and secrets files if they do not exist
 
 # default configuration + UI port changed to 8083
 CONFIG_YAML_CONTENT=$(cat << EOF
@@ -94,4 +79,3 @@ create_file_if_not_exists "automations.yaml" "[]"
 create_file_if_not_exists "scenes.yaml" ""
 create_file_if_not_exists "scripts.yaml" ""
 create_file_if_not_exists "secrets.yaml" "${SECRETS_YAML_CONTENT}"
-create_dir_if_not_exists "${HOME_ASSISTANT_CONFIG_DIR}/deps"
