@@ -21,7 +21,9 @@ create_dir_if_not_exists() {
 
   if [[ ! -d "${dir}" ]]; then
     echo "Creating directory ${dir}"
-    mkdir -p "${dir}"
+    mkdir -pv "${dir}"
+    echo "Listing contents of ${dir}"
+    ls -la "${dir}"
   else
     echo "Directory ${dir} already exists"
   fi
