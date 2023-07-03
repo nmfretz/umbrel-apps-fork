@@ -38,6 +38,7 @@ releaseNotes: >-
 
 
   This update brings Home Assistant to version 2023.6.3, and also enables automatic device discovery and persistence of a user's configuration!
+  
   If you're using the Home Assistant mobile app paired with Home Assistant on your Umbrel, there's a small but important change.
   You'll need to update the mobile app with a new port number, which is `8123`. Alternatively, you can remove the mobile app and re-install to auto-detect
   your Umbrel instance.
