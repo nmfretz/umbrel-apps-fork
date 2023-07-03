@@ -51,24 +51,9 @@ CONFIG_YAML_CONTENT=$(cat << EOF
 # Loads default set of integrations. Do not remove.
 default_config:
 
-# Load frontend themes from the themes folder
-frontend:
-  themes: !include_dir_merge_named themes
-
-# Text-to-speech
-tts:
-  - platform: google_translate
-
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-
 http:
   server_port: 8083
 EOF
 )
 
 create_file_if_not_exists "configuration.yaml" "${CONFIG_YAML_CONTENT}"
-create_file_if_not_exists "automations.yaml" "[]"
-create_file_if_not_exists "scenes.yaml" ""
-create_file_if_not_exists "scripts.yaml" ""
