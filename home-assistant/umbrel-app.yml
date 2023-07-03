@@ -23,7 +23,7 @@ website: https://home-assistant.io
 dependencies: []
 repo: https://github.com/home-assistant/core
 support: https://community.home-assistant.io
-port: 8083
+port: 8123
 gallery:
   - 1.jpg
   - 2.jpg
@@ -33,6 +33,10 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
+  🚨 IMPORTANT: If you are already running the Tallycoin Connect app on your Umbrel, please update the Tallycoin app 
+  to the latest version before updating Home Assistant. This is to avoid a port clash between the two apps.
+
+  
   This update brings Home Assistant to version 2023.6.3, and also enables automatic device discovery and persistence of a user's configuration.
 
 
