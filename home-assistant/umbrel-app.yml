@@ -33,17 +33,23 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  🚨 IMPORTANT: If you are currently running both the Home Assistant and Tallycoin Connect apps on your Umbrel, please update the Tallycoin app 
-  to version 1.8.0-portUpdate1 before updating Home Assistant. This is to avoid a port clash between the two apps.
+  🚨 IMPORTANT: If you are using both the Home Assistant and Tallycoin Connect apps on your Umbrel, please
+  update Tallycoin Connect to the latest version before updating Home Assistant. This step ensures a smooth
+  operation by preventing any port conflicts between the two apps.
 
 
-  This update brings Home Assistant to version 2023.6.3, and also enables automatic device discovery and persistence of a user's configuration!
+  For Home Assistant mobile app users, there's a minor yet significant change. In your Home Assistant mobile
+  app, please use the new port number '8123' to connect it to the Home Assistant app on your Umbrel, or
+  simply reinstall the mobile app for automatic Umbrel detection.
   
-  If you're using the Home Assistant mobile app paired with Home Assistant on your Umbrel, there's a small but important change.
-  You'll need to update the mobile app with a new port number, which is `8123`. Alternatively, you can remove the mobile app and re-install to auto-detect
-  your Umbrel instance.
+
+  This update brings Home Assistant to version 2023.6.3, and also includes automatic device discovery for
+  devices connected to the same network, and the ability to save your personalized settings and automations!
 
 
-  Full 2023.6.3 release notes are available at: https://github.com/home-assistant/core/releases/tag/2023.6.3
+  Home Assistant 2023.6.3 brings a variety of improvements and bug fixes. Services like Fully Kiosk,
+  Fortios device tracker, and Insteon events are now handled more efficiently. The YouTube integration
+  has been refined, selecting lower quality thumbnails for better performance and introducing
+  re-authentication strings for enhanced security. Read more at: https://github.com/home-assistant/core/releases/tag/2023.6.3
 submitter: Umbrel
 submission: https://github.com/getumbrel/umbrel/commit/9d79cffae608c6a6ab077f859c1c531a581cf926

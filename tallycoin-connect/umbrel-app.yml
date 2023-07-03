@@ -19,12 +19,13 @@ gallery:
 path: ""
 deterministicPassword: true
 releaseNotes: >-
-  🚨 IMPORTANT: If you are currently running both the Tallycoin Connect and Home Assistant apps on your Umbrel, please update Tallycoin Connect
-  to this latest version first, and then update Home Assistant to version 2023.6.3.
+  🚨 IMPORTANT: If you are using both the Tallycoin Connect and Home Assistant apps on your Umbrel,
+  please update Tallycoin Connect to the latest version before updating Home Assistant. This step
+  ensures a smooth operation by preventing any port conflicts between the two apps.
   
 
-  This update changes the port that Tallycoin Connect runs on, from 8123 to 8124. This is to avoid a conflict
-  with the Home Assistant app, which now runs on port 8123.
+  This update changes the port that Tallycoin Connect runs on from 8123 to 8124. This is to avoid a
+  port conflict with the Home Assistant app, which now runs on port 8123.
 
 
   There are no updates to the Tallycoin Connect app itself.
