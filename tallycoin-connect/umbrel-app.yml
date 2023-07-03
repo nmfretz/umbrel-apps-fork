@@ -22,8 +22,10 @@ releaseNotes: >-
   ⚠️ This update changes the port that Tallycoin Connect runs on, from 8123 to 8124. This is to avoid a conflict
   with the Home Assistant app, which now runs on port 8123.
 
+
   If you are curently running both Tallycoin Connect and Home Assistant, please update Tallycoin Connect
   first, and then update Home Assistant.
+
 
   There are no updates to the Tallycoin Connect app itself.
 submitter: d11n
