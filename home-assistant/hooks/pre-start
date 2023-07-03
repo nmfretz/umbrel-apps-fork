@@ -27,17 +27,6 @@ create_dir_if_not_exists() {
   fi
 }
 
-create_dir_if_not_exists() {
-  local dir=$1
-  
-  if [[ ! -d "${dir}" ]]; then
-    echo "Creating ${dir}"
-    mkdir -p "${dir}"
-  else
-    echo "${dir} already exists"
-  fi
-}
-
 APP_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 HOME_ASSISTANT_CONFIG_DIR="${APP_DIR}/data"
 PRE_HOST_NETWORK_CONFIGURATION_YAML="${APP_DIR}/configuration.yaml"
