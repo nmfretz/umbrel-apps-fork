@@ -7,7 +7,7 @@ services:
       APP_PORT: 8080
 
   web:
-    image: getumbrel/btc-rpc-explorer:v3.3.0@sha256:cfd14f8e722cfbf1ad106ba224569c8babe685422461a641abc210e13913c636
+    image: nmfretz/btc-rpc-explorer:v0.4.0@sha256:fa772afffb77ddd519e6aeb4bb33674a7a174023c10b290c45f5b6d5d6ae259b
     restart: on-failure
     stop_grace_period: 1m
     environment:
