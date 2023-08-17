@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   server:
-    image: ghcr.io/linuxserver/plex:version-1.32.5@sha256:sha256:4f79fb474e01c629301c90bd3f39d47cc83678e6aceda15effa3e6320f8e296b
+    image: ghcr.io/linuxserver/plex:version-1.32.5@sha256:4f79fb474e01c629301c90bd3f39d47cc83678e6aceda15effa3e6320f8e296b
     restart: on-failure
     hostname: "${DEVICE_HOSTNAME}"
     environment:
