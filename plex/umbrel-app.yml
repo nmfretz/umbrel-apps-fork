@@ -28,7 +28,7 @@ permissions:
 releaseNotes: >-
   This update includes many bug fixes and performance improvements, as well as the following new features:
   
-  - Add “Deep Cuts” station.
+  - New “Deep Cuts” music station.
   
   - Hardware transcoding is now supported for SDR media on AMD GPUs on Linux
   
