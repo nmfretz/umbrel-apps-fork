@@ -12,10 +12,10 @@ services:
     image: portainer/portainer-ce:2.18.4@sha256:94c3056dbe879f3a3df06b427713392a0962924914f5c2fc557de3797f59f926
     # command: -H tcp://host.docker.internal:2375
     # command: -H tcp://localhost:2375
-    command: -H tcp://umbrel-2.local:2375
-    network_mode: host
-    #ports:
-    #  - "9000:9000"
+    # command: -H tcp://umbrel-2.local:2375
+    command: -H tcp://${DEVICE_IP}:2375
+    ports:
+      - "9000:9000"
     depends_on:
       - dind
     restart: unless-stopped
