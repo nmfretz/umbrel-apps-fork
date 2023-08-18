@@ -1,0 +1,23 @@
+manifestVersion: 1
+id: portainer
+category: developer
+name: Portainer
+version: "v2.18.4"
+tagline: tagline...
+description: >-
+  description...
+website: https://www.portainer.io/
+dependencies: []
+repo: repo...
+support: support...
+port: 9000
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
+torOnly: false
+submission: https://github.com/getumbrel/umbrel-apps/...
