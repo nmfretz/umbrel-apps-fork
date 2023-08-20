@@ -4,7 +4,7 @@ services:
   dind:
     image: docker:dind
     privileged: true
-    command: dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+    command: dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --tls=false
     network_mode: host
     environment:
       - http_proxy=http://nginx_proxy:8080
