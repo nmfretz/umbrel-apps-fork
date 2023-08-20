@@ -6,6 +6,9 @@ services:
     privileged: true
     command: dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --tls=false
     network_mode: host
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
 
   portainer:
     image: portainer/portainer-ce:2.18.4@sha256:94c3056dbe879f3a3df06b427713392a0962924914f5c2fc557de3797f59f926
