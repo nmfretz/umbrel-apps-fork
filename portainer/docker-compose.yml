@@ -4,9 +4,11 @@ services:
   dind:
     image: docker:dind
     privileged: true
-    # command: dockerd -H tcp://0.0.0.0:2375
     command: dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
     network_mode: host
+    environment:
+      - http_proxy=http://nginx_proxy:8080
+      - https_proxy=http://nginx_proxy:8080
 
   portainer:
     image: portainer/portainer-ce:2.18.4@sha256:94c3056dbe879f3a3df06b427713392a0962924914f5c2fc557de3797f59f926
@@ -16,3 +18,12 @@ services:
     depends_on:
       - dind
     restart: unless-stopped
+
+  nginx_proxy:
+  image: nginx:1.17.8@sha256:380eb808e2a3b0dd954f92c1cae2f845e6558a15037efefcabc5b4e03d666d03
+  volumes:
+    - ${APP_DATA_DIR}/data/nginx:/etc/nginx
+  ports:
+    - "8080:80"
+  restart: on-failure
+  stop_grace_period: 30s
