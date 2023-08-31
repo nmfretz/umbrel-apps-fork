@@ -57,7 +57,8 @@ services:
   lightningd:
     # image: elementsproject/lightningd:v23.08@sha256:b00bbbbff77e1a3c8e1172777e0bc80c3af9f74c79683cf18a45636b04e29c7f
     # image: elementsproject/lightningd:v23.05.1@sha256:9e5e4fff748c5b2e344e0540e063aca3e0c9a2a2dff17286c178b159c11bc7d1
-    image: lncm/clightning:v22.11.1@sha256:e9939341ca6736566e0499db5a339b25140d6e77fb16ab202c217112f0df9b77
+    # image: lncm/clightning:v22.11.1@sha256:e9939341ca6736566e0499db5a339b25140d6e77fb16ab202c217112f0df9b77
+    image: elementsproject/lightningd:v22.11.1@sha256:14f1a7937f9692184e46ab6245ed51ed86262d208e81fd5ec5f0339ac5bf8096
     restart: on-failure
     ports:
       - ${APP_CORE_LIGHTNING_DAEMON_PORT}:9735
