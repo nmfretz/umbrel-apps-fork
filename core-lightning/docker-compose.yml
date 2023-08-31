@@ -38,7 +38,8 @@ services:
         ipv4_address: ${APP_CORE_LIGHTNING_IP}
   
   c-lightning-rest:
-    image: saubyk/c-lightning-rest:0.10.5@sha256:51941e2b5e82fae87a833fbee658961ca223a40d63e3f685f55c3538764652ec
+    # image: saubyk/c-lightning-rest:0.10.5@sha256:51941e2b5e82fae87a833fbee658961ca223a40d63e3f685f55c3538764652ec
+    image: saubyk/c-lightning-rest:0.10.4@sha256:67490eb366a715118df122817553c7340dd87c10a729a7939c5221c308e4b798
     restart: on-failure
     ports:
       - ${APP_CORE_LIGHTNING_REST_PORT}:${APP_CORE_LIGHTNING_REST_PORT}
