@@ -38,9 +38,9 @@ services:
         ipv4_address: ${APP_CORE_LIGHTNING_IP}
   
   c-lightning-rest:
-    # image: saubyk/c-lightning-rest:0.10.5@sha256:51941e2b5e82fae87a833fbee658961ca223a40d63e3f685f55c3538764652ec
+    image: saubyk/c-lightning-rest:0.10.5@sha256:51941e2b5e82fae87a833fbee658961ca223a40d63e3f685f55c3538764652ec
     # image: saubyk/c-lightning-rest:0.10.4@sha256:67490eb366a715118df122817553c7340dd87c10a729a7939c5221c308e4b798
-    image: saubyk/c-lightning-rest:0.10.0@sha256:d8ef05b7b5b89cdab8fcbfa098bec1f6fd8b30c3a02812c47abfabfc2dafe1c9
+    # image: saubyk/c-lightning-rest:0.10.0@sha256:d8ef05b7b5b89cdab8fcbfa098bec1f6fd8b30c3a02812c47abfabfc2dafe1c9
     restart: on-failure
     ports:
       - ${APP_CORE_LIGHTNING_REST_PORT}:${APP_CORE_LIGHTNING_REST_PORT}
@@ -55,8 +55,9 @@ services:
         ipv4_address: ${APP_CORE_LIGHTNING_REST_IP}
 
   lightningd:
-    image: elementsproject/lightningd:v23.08@sha256:b00bbbbff77e1a3c8e1172777e0bc80c3af9f74c79683cf18a45636b04e29c7f
+    # image: elementsproject/lightningd:v23.08@sha256:b00bbbbff77e1a3c8e1172777e0bc80c3af9f74c79683cf18a45636b04e29c7f
     # image: elementsproject/lightningd:v23.05.1@sha256:9e5e4fff748c5b2e344e0540e063aca3e0c9a2a2dff17286c178b159c11bc7d1
+    image: lncm/clightning:v22.11.1@sha256:e9939341ca6736566e0499db5a339b25140d6e77fb16ab202c217112f0df9b77
     restart: on-failure
     ports:
       - ${APP_CORE_LIGHTNING_DAEMON_PORT}:9735
