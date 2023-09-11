@@ -55,6 +55,7 @@ services:
       BTCPAY_SOCKSENDPOINT: $TOR_PROXY_IP:$TOR_PROXY_PORT
       BTCPAY_EXPLORERPOSTGRES: User ID=postgres;Host=btcpay-server_postgres_1;Port=5432;Application Name=nbxplorer;MaxPoolSize=20;Database=nbxplorer$APP_BITCOIN_NETWORK
       BTCPAY_TORSERVICES: "btcpayserver:$APP_HIDDEN_SERVICE"
+      BTCPAY_ENABLE_SSH: "true"
 
   postgres:
     image: btcpayserver/postgres:13.10@sha256:12b8f625bc64b5b129e0e7a672e5e31fb5d39a7dbe42233eef7ab321568f30e7
