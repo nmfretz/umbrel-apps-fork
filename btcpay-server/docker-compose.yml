@@ -45,7 +45,7 @@ services:
       HOME: "/data"
       BTCPAY_DATADIR: "/data"
       BTCPAY_PLUGINDIR: "/data/plugins"
-      BTCPAY_DOCKERDEPLOYMENT: "false"
+      BTCPAY_DOCKERDEPLOYMENT: "true"
       BTCPAY_POSTGRES: "User ID=postgres;Host=btcpay-server_postgres_1;Port=5432;Database=btcpayserver$APP_BITCOIN_NETWORK"
       BTCPAY_NETWORK: "$APP_BITCOIN_NETWORK"
       BTCPAY_BIND: 0.0.0.0:3003
