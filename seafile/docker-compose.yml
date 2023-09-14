@@ -12,6 +12,7 @@ services:
     container_name: seafile-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=wiufh%woi&rwioj*q
+      - MYSQL_USER=seafile
       - MYSQL_LOG_CONSOLE=true
     volumes:
       - ${APP_DATA_DIR}/data/db:/var/lib/mysql
