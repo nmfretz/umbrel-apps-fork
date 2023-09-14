@@ -30,7 +30,7 @@ services:
     environment:
       - DB_HOST=db
       - DB_ROOT_PASSWD=wiufh%woi&rwioj*q
-      - NON
+      - NON_ROOT=true
     depends_on:
       - db
       - memcached
