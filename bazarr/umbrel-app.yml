@@ -21,7 +21,7 @@ releaseNotes: >-
   Small bug fixes and improvements.
 
 
-Read the full release notes at https://github.com/morpheus65535/bazarr/releases/tag/v1.2.2
+  Read the full release notes at https://github.com/morpheus65535/bazarr/releases/tag/v1.2.2
 developer: morpheus65535
 website: https://www.bazarr.media/
 dependencies: []
@@ -36,5 +36,3 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 torOnly: false
-submitter: Umbrel
-submission: https://github.com/getumbrel/umbrel-apps/pull/610
