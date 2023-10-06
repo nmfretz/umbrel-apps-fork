@@ -28,6 +28,7 @@ jobs:
                 ARCHITECTURES=$(docker run --rm mplatform/mquery:v0.5.0@sha256:d0989420b6f0d2b929fd9355f15c767f62d0e9a72cdf999d1eb16e6073782c71 $IMAGE | grep -E 'linux/amd64|linux/arm64')
                 if [[ ! $ARCHITECTURES =~ "linux/amd64" ]] || [[ ! $ARCHITECTURES =~ "linux/arm" ]]; then
                   echo "::error::Image $IMAGE does not support both linux/amd64 and linux/arm architectures"
+                  echo "::set-output name=IMAGE_ERROR::Image $IMAGE does not support both linux/amd64 and linux/arm architectures"
                 fi
             done
         }
