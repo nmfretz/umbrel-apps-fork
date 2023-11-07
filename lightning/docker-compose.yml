@@ -33,6 +33,7 @@ services:
       JSON_SETTINGS_FILE: "/data/settings.json"
       UMBREL_LND_CONF_FILEPATH: "/data/.lnd/umbrel-lnd.conf"
       LND_CONF_FILEPATH: "/data/.lnd/lnd.conf"
+      LND_INITIALIZE_WITH_TOR_ONLY: "${LND_INITIALIZE_WITH_TOR_ONLY:-unset}"
       DEVICE_DOMAIN_NAME: "${DEVICE_DOMAIN_NAME}"
       EXPLORER_PORT: "${APP_MEMPOOL_PORT}"
       EXPLORER_HIDDEN_SERVICE: "${APP_MEMPOOL_HIDDEN_SERVICE}"
