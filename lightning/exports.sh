@@ -62,15 +62,13 @@ export APP_LIGHTNING_GRPC_HIDDEN_SERVICE="$(cat "${grpc_hidden_service_file}" 2>
 	# If no lnd/data directory exists, we write out a file to indicate that this is a fresh install.
 	# This gets around the issue of the pre-start hook starting up the lnd container early for Tor HS creation
 	# and creating the lnd/data directory.
-	if [[ ! -d "${LND_DATA_DIR}/data" ]]
-	then
+	if [[ ! -d "${LND_DATA_DIR}/data" ]]; then
 		touch "${IS_POST_HYBRID_MODE_INSTALL_FILE_PATH}"
 	fi
 
 	APP_CONFIG_EXISTS="false"
 	APP_HYBRID_MODE_SETTING_EXISTS="false"
-	if [[ -f "${LIGHTNING_DATA_DIR}/settings.json" ]]
-	then
+	if [[ -f "${LIGHTNING_DATA_DIR}/settings.json" ]]; then
 		APP_CONFIG_EXISTS="true"
 		if jq -e '.lnd | has("tor.skip-proxy-for-clearnet-targets")' "${LIGHTNING_DATA_DIR}/settings.json" >/dev/null 2>&1; then
 			APP_HYBRID_MODE_SETTING_EXISTS="true"
