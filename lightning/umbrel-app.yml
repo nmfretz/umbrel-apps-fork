@@ -22,7 +22,13 @@ description: >-
 
   An official app from Umbrel.
 releaseNotes: >-
-  This update brings LND 0.17.0...
+  This update brings LND 0.17.0, the option to run your node in hybrid mode or as a Tor-only node, private channels, and more!
+
+  
+  - Hybrid mode allows your node to make connections to peers over both Tor and clearnet, enhancing both latency and connection stability. This is the default mode for new nodes. If you want to run your node as a Tor-only node, you can do so by disabling Hybrid Mode in Advanced Settings.
+
+  
+  - You now have the option of making a channel private when you open one. Private channels provide increased privacy by not broadcasting details to the entire Lightning Network, but they have limited routing capabilities compared to public channels.
   
   
   Discover what's new in LND 0.17.0: https://github.com/lightningnetwork/lnd/blob/master/docs/release-notes/release-notes-0.17.0.md
