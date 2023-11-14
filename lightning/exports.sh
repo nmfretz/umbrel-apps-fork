@@ -63,26 +63,33 @@ export APP_LIGHTNING_GRPC_HIDDEN_SERVICE="$(cat "${grpc_hidden_service_file}" 2>
 	# This gets around the issue of the pre-start hook starting up the lnd container early for Tor HS creation
 	# and creating the lnd/data directory.
 	if [[ ! -d "${LND_DATA_DIR}/data" ]]; then
+		echo "Fresh install detected, there is no lnd/data directory"
 		touch "${IS_POST_HYBRID_MODE_INSTALL_FILE_PATH}"
 	fi
 
 	APP_CONFIG_EXISTS="false"
 	APP_HYBRID_MODE_SETTING_EXISTS="false"
 	if [[ -f "${LIGHTNING_DATA_DIR}/settings.json" ]]; then
+		echo "Found settings.json"
 		APP_CONFIG_EXISTS="true"
 		if jq -e '.lnd | has("tor.skip-proxy-for-clearnet-targets")' "${LIGHTNING_DATA_DIR}/settings.json" >/dev/null 2>&1; then
+			echo "Found hybrid mode setting"
 			APP_HYBRID_MODE_SETTING_EXISTS="true"
 		fi
 	fi
 
 	# We only need to preserve tor-only configuration for existing pre-1.2.0 installs
 	if [[ ! -f "${IS_POST_HYBRID_MODE_INSTALL_FILE_PATH}" ]]; then
+		echo "IS_POST_HYBRID_MODE_INSTALL_FILE_PATH does not exist, this is NOT a fresh install"
 		if [[ "${APP_CONFIG_EXISTS}" = "false" ]]; then
+			echo "settings.json does not exist, this is an update to a pre-Advanced-Settings version of the app"
 			# If no settings.json exists at all this is an update to a pre-Advanced-Settings version of the app, so we preserve existing tor-only configuration
 			export LND_INITIALIZE_WITH_TOR_ONLY="true"
 		elif [[ "${APP_CONFIG_EXISTS}" = "true" ]] && [[ "${APP_HYBRID_MODE_SETTING_EXISTS}" = "false" ]]; then
+			echo "settings.json exists, but there is no hybrid mode setting yet, this is an update to a pre-1.2.0 version of the app"
 			# If settings.json exists, but there is no hybrid mode setting yet, then this is a pre-1.2.0 version of the app, so we still preserve existing tor-only configuration
 			export LND_INITIALIZE_WITH_TOR_ONLY="true"
 		fi
 	fi
-} || true
+	echo "LND_INITIALIZE_WITH_TOR_ONLY=${LND_INITIALIZE_WITH_TOR_ONLY}"
+} || true1

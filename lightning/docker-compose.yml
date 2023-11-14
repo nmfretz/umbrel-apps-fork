@@ -7,7 +7,7 @@ services:
       APP_PORT: 3006
 
   app:
-    image: nmfretz/umbrel-lightning:1.2.0@sha256:0e38c1dde14120bb37695cf35f55b9045b6fce3c3ae47f1bc3905146b6061473
+    image: nmfretz/umbrel-lightning:1.2.0@sha256:3593bee74614b7001890f2527fb6fceebe140e1a7711f673e2c29dfe0dedcd5f
     restart: on-failure
     volumes:
       - "${APP_LIGHTNING_NODE_DATA_DIR}:/data/.lnd"
