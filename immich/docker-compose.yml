@@ -52,7 +52,7 @@ services:
     restart: on-failure
 
   machine-learning:
-    image: ghcr.io/immich-app/immich-machine-learning:v1.88.2sha256:134b6d16b76acd2b6a6ee43c6866668c1c00c33fb3c989bbae5ad867acc2f71b
+    image: ghcr.io/immich-app/immich-machine-learning:v1.88.2@sha256:134b6d16b76acd2b6a6ee43c6866668c1c00c33fb3c989bbae5ad867acc2f71b
     volumes:
       - ${APP_DATA_DIR}/data/model-cache:/cache
     environment:
