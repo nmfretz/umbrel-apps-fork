@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# restart app if SMB_CONF_EXISTS="false" so timemachine smb.conf is sourced correctly
+if [ "${SMB_CONF_EXISTS}" = "false" ]; then
+  echo "SMB_CONF_EXISTS is false, restarting ${APP_ID}"
+  "${UMBREL_ROOT}/scripts/app" restart "${APP_ID}" &
+fi
