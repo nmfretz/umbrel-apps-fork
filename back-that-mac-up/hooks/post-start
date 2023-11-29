@@ -5,3 +5,5 @@ if [ "${SMB_CONF_EXISTS}" = "false" ]; then
   echo "SMB_CONF_EXISTS is false, restarting ${APP_ID}"
   "${UMBREL_ROOT}/scripts/app" restart "${APP_ID}" &
 fi
+
+exit 0
