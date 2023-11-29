@@ -6,4 +6,4 @@ if [ "${SMB_CONF_EXISTS}" = "false" ]; then
   "${UMBREL_ROOT}/scripts/app" restart "${APP_ID}" &
 fi
 
-exit 0
+exit
