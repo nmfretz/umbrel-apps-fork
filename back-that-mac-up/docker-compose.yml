@@ -3,15 +3,8 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: back-that-mac-up_web_1
-      APP_PORT: 3000
-
-  web:
-    # image: ...
-    build: ../../../btmu-test/frontend
-    restart: on-failure
-    environment:
-      SERVER_URL: "http://server"
+      APP_HOST: back-that-mac-up_server_1
+      APP_PORT: 80
 
   server:
     # image: ...
