@@ -18,5 +18,7 @@ gallery:
 path: ""
 defaultUsername: ""
 defaultPassword: ""
+permissions:
+  - STORAGE_DOWNLOADS
 submitter: MontejoJorge
 submission: https://github.com/getumbrel/umbrel-apps/pull/864
