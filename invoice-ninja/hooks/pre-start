@@ -31,6 +31,9 @@ LARAVEL_APP_KEY_FILE_PATH="${APP_DATA_DIR}/laravel-app-key.txt"
 
 # We only generate and save the Laravel APP_KEY if it doesn't exist already
 if [[ ! -f "${LARAVEL_APP_KEY_FILE_PATH}" ]]; then
-	APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" run --rm app php artisan key:generate --show)
+	# APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" run --rm app php artisan key:generate --show)
+	APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up app php artisan key:generate --show)
+	# compose down using the same script
+	"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" down
 	echo "${APP_KEY}" > "${LARAVEL_APP_KEY_FILE_PATH}"
 fi
