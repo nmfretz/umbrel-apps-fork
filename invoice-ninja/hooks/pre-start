@@ -33,7 +33,7 @@ echo "LARAVEL_APP_KEY_FILE_PATH: ${LARAVEL_APP_KEY_FILE_PATH}"
 # We only generate and save the Laravel APP_KEY if it doesn't exist already
 if [[ ! -f "${LARAVEL_APP_KEY_FILE_PATH}" ]]; then
 	echo "Generating Laravel APP_KEY..."
-	APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" run --rm app php artisan key:generate --show | tr -d '\r\n')
+	APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" run --rm app php artisan key:generate --show | sed 's/\x1b\[[0-9;]*m//g' | tr -d '\r\n')
 	echo "${APP_KEY}" > "${LARAVEL_APP_KEY_FILE_PATH}"
 	echo "Generated Laravel APP_KEY: ${APP_KEY}"
 
