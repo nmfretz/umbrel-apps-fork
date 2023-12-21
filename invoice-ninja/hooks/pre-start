@@ -38,6 +38,6 @@ if [[ ! -f "${LARAVEL_APP_KEY_FILE_PATH}" ]]; then
 	echo "${APP_KEY}" > "${LARAVEL_APP_KEY_FILE_PATH}"
 	echo "Generated Laravel APP_KEY: ${APP_KEY}"
 	# docker ps -a
-	docker ps -a | grep invoiceninja
+	docker ps -a
 
 fi
