@@ -34,10 +34,12 @@ echo "LARAVEL_APP_KEY_FILE_PATH: ${LARAVEL_APP_KEY_FILE_PATH}"
 if [[ ! -f "${LARAVEL_APP_KEY_FILE_PATH}" ]]; then
 	echo "Generating Laravel APP_KEY..."
 	APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" run --rm app php artisan key:generate --show)
-	# APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up app php artisan key:generate --show)
 	echo "${APP_KEY}" > "${LARAVEL_APP_KEY_FILE_PATH}"
 	echo "Generated Laravel APP_KEY: ${APP_KEY}"
-	# docker ps -a
-	docker ps -a
+
+	# sleep for 10 seconds to give the app time to start
+	echo "Sleeping for 10 seconds to give the app time to start..."
+	sleep 10
+	echo "Done sleeping"
 
 fi
