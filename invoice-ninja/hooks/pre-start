@@ -32,13 +32,12 @@ echo "LARAVEL_APP_KEY_FILE_PATH: ${LARAVEL_APP_KEY_FILE_PATH}"
 
 # We only generate and save the Laravel APP_KEY if it doesn't exist already
 if [[ ! -f "${LARAVEL_APP_KEY_FILE_PATH}" ]]; then
-	# APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" run --rm app php artisan key:generate --show)
 	echo "Generating Laravel APP_KEY..."
-	APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up app php artisan key:generate --show)
+	APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" run --rm app php artisan key:generate --show)
+	# APP_KEY=$("${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up app php artisan key:generate --show)
 	echo "${APP_KEY}" > "${LARAVEL_APP_KEY_FILE_PATH}"
 	echo "Generated Laravel APP_KEY: ${APP_KEY}"
-	# compose down using the same script
-	echo "Stopping app..."
-	"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" down
-	echo "Stopped app"
+	# docker ps -a
+	docker ps -a | grep invoiceninja
+
 fi
