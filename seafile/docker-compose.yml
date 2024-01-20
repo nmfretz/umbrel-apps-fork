@@ -31,7 +31,7 @@ services:
       - SEAFILE_ADMIN_EMAIL=umbrel
       - SEAFILE_ADMIN_PASSWORD=${APP_PASSWORD}
       - SEAFILE_SERVER_LETSENCRYPT=false
-      # - SEAFILE_SERVER_HOSTNAME=${DEVICE_DOMAIN_NAME}:8920
+      - SEAFILE_SERVER_HOSTNAME=
     depends_on:
       - db
       - memcached
