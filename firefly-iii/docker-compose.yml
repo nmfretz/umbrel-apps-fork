@@ -3,13 +3,13 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: firefly-iii_app_1
+      APP_HOST: firefly-iii_server_1
       APP_PORT: 8080
       # PROXY_AUTH_ADD: "false"
       PROXY_AUTH_WHITELIST: "/api/*"
       # PROXY_AUTH_WHITELIST: "/api/*,/oauth/*,/callback*"
 
-  app:
+  server:
     image: fireflyiii/core:version-6.1.4@sha256:b9905d30934be51453bbb956be88c9ff9db35edce6f3779f8fae1ba87e820a69
     # This image runs under the user/group www-data:www-data
     # user: "1000:1000"
@@ -47,7 +47,7 @@ services:
     ports:
       - '30010:8080'
     depends_on:
-      - app
+      - server
     environment:
-      - FIREFLY_III_URL=http://app:8080
+      - FIREFLY_III_URL=http://server:8080
       - VANITY_URL=http://${DEVICE_DOMAIN_NAME}:30009
