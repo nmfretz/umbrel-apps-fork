@@ -50,4 +50,4 @@ services:
       - server
     environment:
       # - FIREFLY_III_URL=http://${DEVICE_DOMAIN_NAME}:30009
-      - FIREFLY_III_URL=http://app:8080
+      # - FIREFLY_III_URL=http://app:8080
