@@ -41,8 +41,8 @@ services:
     image: fireflyiii/data-importer:version-1.4.0@sha256:05f8e99dbafe57f7f2158298253d20c9fb27733abeec9e9c17ad8e951760464d
     restart: always
     ports:
-      - '81:8080'
+      - '30010:8080'
     depends_on:
       - server
     environment:
-      - FIREFLY_III_URL=$DEVICE_DOMAIN_NAME
+      - FIREFLY_III_URL=$DEVICE_DOMAIN_NAME:30009
