@@ -8,11 +8,12 @@ services:
   #     # PROXY_AUTH_ADD: "false"
   #     PROXY_AUTH_WHITELIST: "/api/*,/oauth/*,/callback*"
 
-  server:
+  app:
     image: fireflyiii/core:version-6.1.4@sha256:b9905d30934be51453bbb956be88c9ff9db35edce6f3779f8fae1ba87e820a69
     # This image runs under the user/group www-data:www-data
     # user: "1000:1000"
     hostname: app
+    container_name: firefly_iii_core
     restart: on-failure
     ports:
       - '30009:8080'
@@ -30,6 +31,8 @@ services:
   
   db:
     image: mariadb:10.9.4@sha256:f5146e2e0999a6afcf2a9134bb415ad068bf80ec29704f374f6f7dabb145738d
+    hostname: db
+    container_name: firefly_iii_db
     user: "1000:1000"
     restart: on-failure
     stop_grace_period: 1m
@@ -43,6 +46,8 @@ services:
 
   importer:
     image: fireflyiii/data-importer:version-1.4.0@sha256:05f8e99dbafe57f7f2158298253d20c9fb27733abeec9e9c17ad8e951760464d
+    image: fireflyiii/data-importer:latest
+    hostname: importer
     restart: on-failure
     ports:
       - '30010:8080'
