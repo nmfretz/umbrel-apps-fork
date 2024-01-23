@@ -45,4 +45,4 @@ services:
     depends_on:
       - server
     environment:
-      - FIREFLY_III_URL=server:8080
+      - FIREFLY_III_URL=http://server:8080
