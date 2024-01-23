@@ -45,4 +45,4 @@ services:
     depends_on:
       - server
     environment:
-      - FIREFLY_III_URL=$DEVICE_DOMAIN_NAME:30009
+      - FIREFLY_III_URL=server:8080
