@@ -12,6 +12,7 @@ services:
     image: fireflyiii/core:version-6.1.4@sha256:b9905d30934be51453bbb956be88c9ff9db35edce6f3779f8fae1ba87e820a69
     # This image runs under the user/group www-data:www-data
     # user: "1000:1000"
+    hostname: app
     restart: on-failure
     ports:
       - '30009:8080'
@@ -49,4 +50,4 @@ services:
       - server
     environment:
       # - FIREFLY_III_URL=http://${DEVICE_DOMAIN_NAME}:30009
-      - FIREFLY_III_URL=http://firefly-iii_server_1:8080
+      - FIREFLY_III_URL=http://app:8080
