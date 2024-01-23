@@ -5,7 +5,7 @@ services:
     environment:
       APP_HOST: firefly-iii_server_1
       APP_PORT: 8080
-      PROXY_AUTH_WHITELIST: "/api/*"
+      PROXY_AUTH_WHITELIST: "/api/*,/oauth/*"
 
   server:
     image: fireflyiii/core:version-6.1.4@sha256:b9905d30934be51453bbb956be88c9ff9db35edce6f3779f8fae1ba87e820a69
