@@ -14,4 +14,4 @@ services:
     volumes:
       - ${APP_DATA_DIR}/databag-data:/var/lib/databag
     environment:
-      ADMIN: "1234"
+      ADMIN: $APP_PASSWORD
