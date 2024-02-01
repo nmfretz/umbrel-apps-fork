@@ -23,6 +23,6 @@ services:
     init: true
     restart: on-failure
     volumes:
-      - ${APP_DATA_DIR}/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ${APP_DATA_DIR}/data/nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - web
