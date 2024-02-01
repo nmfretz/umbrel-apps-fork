@@ -3,8 +3,8 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: 2fauth_web_1
-      APP_PORT: 8000
+      APP_HOST: 2fauth_nginx_1
+      APP_PORT: 80
       PROXY_AUTH_ADD: "false" #has it's own auth
 
   web:
@@ -17,3 +17,12 @@ services:
       - APP_KEY=${APP_2FAUTH_APP_KEY} # data encryption
       - APP_URL=http://${DEVICE_DOMAIN_NAME}:8235
       - ASSET_URL=http://${DEVICE_DOMAIN_NAME}:8235
+
+  nginx:
+    image: nginx:1.19-alpine@sha256:07ab71a2c8e4ecb19a5a5abcfb3a4f175946c001c8af288b1aa766d67b0d05d2
+    init: true
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/nginx/nginx.conf:/etc/nginx/templates/nginx.conf
+    depends_on:
+      - web
