@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   app_proxy:
+    container_name: chatbot-ui-app_proxy
     environment:
       APP_HOST: chatbot-ui-web
       APP_PORT: 3000
