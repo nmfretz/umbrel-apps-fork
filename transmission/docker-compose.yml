@@ -12,7 +12,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TRANSMISSION_RPC_HOST_WHITELIST_ENABLED=true
+      - HOST_WHITELIST=${DEVICE_DOMAIN_NAME}
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
