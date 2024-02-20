@@ -17,7 +17,7 @@ services:
       - ${APP_DATA_DIR}/data/config:/config
       - ${UMBREL_ROOT}/data/storage/downloads:/downloads
     ports:
-      - 9091:9091
+      # - 9091:9091
       - 51413:51413
       - 51413:51413/udp
     restart: on-failure
