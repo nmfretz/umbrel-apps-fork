@@ -41,5 +41,23 @@ releaseNotes: >-
   Full release notes are available at https://github.com/transmission/transmission/releases
 permissions:
   - STORAGE_DOWNLOADS
+widgets:
+  - id: status
+    type: four-up
+    refresh: 5000
+    link: "/transmission/web/"
+    example:
+      - title: "Downloading"
+        value: "0"
+        valueSub: "torrents"
+      - title: "Seeding"
+        value: "0"
+        valueSub: "torrents"
+      - title: "Stopped"
+        value: "0"
+        valueSub: "torrents"
+      - title: "Queued"
+        value: "0"
+        valueSub: "torrents"
 submitter: Umbrel
 submission: https://github.com/getumbrel/umbrel-apps/commit/60878f278d544b204d8e7c96240c797f43a9b319
