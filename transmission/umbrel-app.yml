@@ -47,17 +47,20 @@ widgets:
     refresh: 5000
     link: "/transmission/web/"
     example:
-      - title: "Downloading"
-        value: "0"
-        valueSub: "torrents"
-      - title: "Seeding"
-        value: "0"
-        valueSub: "torrents"
-      - title: "Stopped"
-        value: "0"
-        valueSub: "torrents"
-      - title: "Queued"
-        value: "0"
-        valueSub: "torrents"
+      type: "four-up"
+      link: "/transmission/web/"
+      items:
+        - title: "Downloading"
+          value: "statusCategories.downloading"
+          valueSub: "torrents"
+        - title: "Seeding"
+          value: "statusCategories.seeding"
+          valueSub: "torrents"
+        - title: "Stopped"
+          value: "statusCategories.stopped"
+          valueSub: "torrents"
+        - title: "Queued"
+          value: "statusCategories.queued"
+          valueSub: "torrents"
 submitter: Umbrel
 submission: https://github.com/getumbrel/umbrel-apps/commit/60878f278d544b204d8e7c96240c797f43a9b319
