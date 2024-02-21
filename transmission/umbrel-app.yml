@@ -45,7 +45,8 @@ widgets:
   - id: status
     type: four-up
     refresh: 5000
-    link: "/transmission/web/"
+    endpoint: widget-server/widgets/torrent-list
+    link: /transmission/web/
     example:
       type: "four-up"
       link: "/transmission/web/"
