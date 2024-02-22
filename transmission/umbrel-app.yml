@@ -45,7 +45,9 @@ widgets:
   - id: status
     type: four-up
     refresh: 5000
-    endpoint: widget-server/widgets/torrent-list
+    container: widget-server
+    port: 80
+    endpoint: /widgets/torrent-list
     link: /transmission/web/
     example:
       type: "four-up"
