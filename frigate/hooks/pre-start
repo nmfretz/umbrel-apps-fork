@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# if config.yml exists in APP_DATA_DIR, move it to APP_DATA_DIR/config
+
+APP_DATA_DIR="$(readlink -f $(dirname "${BASH_SOURCE[0]}")/..)/data"
+
+if [ -f "${APP_DATA_DIR}/config.yml" ]; then
+  mv "${APP_DATA_DIR}/config.yml" "${APP_DATA_DIR}/config"
+fi
