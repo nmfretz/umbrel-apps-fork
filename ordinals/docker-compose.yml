@@ -13,10 +13,15 @@ services:
     # user: "1000:1000"
     restart: on-failure
     # First-inscription-height may not be needed in the future
+    # command: "--first-inscription-height 767430 --index-runes --data-dir /var/lib/ord --bitcoin-data-dir /var/lib/bitcoind --bitcoin-rpc-url ${APP_BITCOIN_NODE_IP}:${APP_BITCOIN_RPC_PORT} --chain ${APP_BITCOIN_NETWORK} server --http"
     command: "--first-inscription-height 767430 --index-runes --data-dir /var/lib/ord --bitcoin-data-dir /var/lib/bitcoind --bitcoin-rpc-url ${APP_BITCOIN_NODE_IP}:${APP_BITCOIN_RPC_PORT} --chain ${APP_BITCOIN_NETWORK} server --http"
     volumes:
       - ${APP_DATA_DIR}/data/ord:/var/lib/ord
       - ${APP_BITCOIN_DATA_DIR}:/var/lib/bitcoind:ro
     environment:
+      ORD_DATA_DIR: "/var/lib/ord"
+      ORD_BITCOIN_DATA_DIR: "/var/lib/bitcoind"
       ORD_BITCOIN_RPC_USERNAME: "${APP_BITCOIN_RPC_USER}"
       ORD_BITCOIN_RPC_PASSWORD: "${APP_BITCOIN_RPC_PASS}"
+      ORD_BITCOIN_RPC_URL: "${APP_BITCOIN_NODE_IP}:${APP_BITCOIN_RPC_PORT}"
+      ORD_CHAIN: "${APP_BITCOIN_NETWORK}"
