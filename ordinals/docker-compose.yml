@@ -17,3 +17,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data/ord:/var/lib/ord
       - ${APP_BITCOIN_DATA_DIR}:/var/lib/bitcoind:ro
+    environment:
+      ORD_BITCOIN_RPC_USERNAME: "${APP_BITCOIN_RPC_USER}"
+      ORD_BITCOIN_RPC_PASSWORD: "${APP_BITCOIN_RPC_PASS}"
