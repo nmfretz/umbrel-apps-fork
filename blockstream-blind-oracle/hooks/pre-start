@@ -29,8 +29,13 @@ done
 
 if [[ ! -f "${HIDDEN_SERVICE_FILE}" ]]; then
 	echo "App: ${APP_ID} - Hidden service file wasn't created"
-	# exit
+	exit
 fi
+
+
+
+# compose down node container so that web container starts before and has an oportunity to update the secret, if necessary
+# "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" down node
 
 # Restart to apply new environment variables to web container
 # echo "App: ${APP_ID} - Restarting to apply new environment variables..."
@@ -40,5 +45,5 @@ fi
 # echo "App: ${APP_ID} - Restarting web container..."
 # "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart web
 
-# echo "App: ${APP_ID} - Restarting to apply new environment variables..."
-# "${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
+echo "App: ${APP_ID} - Restarting to allow web correct container order..."
+"${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
