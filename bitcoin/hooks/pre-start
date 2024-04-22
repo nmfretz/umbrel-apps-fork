@@ -24,3 +24,6 @@ done
 if [[ ! -f "${HIDDEN_SERVICE_FILE}" ]]; then
 	echo "App: ${APP_ID} - Hidden service file wasn't created"
 fi
+
+echo "App: ${APP_ID} - Restarting to apply new environment variables..."
+"${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
