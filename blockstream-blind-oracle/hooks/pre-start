@@ -22,7 +22,6 @@ echo "App: ${APP_ID} - Generating Tor Hidden Service..."
 for attempt in $(seq 1 100); do
 	if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
 		echo "App: ${APP_ID} - Hidden service file created successfully!"
-		sleep 5
 		break
 	fi
 	sleep 0.1
