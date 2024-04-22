@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
+# Delay booting pinserver until the Tor Hidden Service is ready
+
+HIDDEN_SERVICE_FILE="${TOR_DATA_DIR}/app-${APP_ID}-node/hostname"
+
+# if the hidden service file already exists we do nothing
+if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
+	exit
+fi
 
 # Create secret if needed
 "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach web
 
-# Delay booting pinserver until the Tor Hidden Service is ready
-HIDDEN_SERVICE_FILE="${TOR_DATA_DIR}/app-${APP_ID}-node/hostname"
-
-if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
-	# Restart
-	"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart
-	exit
-fi
 echo "App: ${APP_ID} - Generating Tor Hidden Service..."
 
 # Create tor endpoints if needed
@@ -28,5 +28,5 @@ if [[ ! -f "${HIDDEN_SERVICE_FILE}" ]]; then
 	echo "App: ${APP_ID} - Hidden service file wasn't created"
 fi
 
-# Restart
-"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart
+# Restart web container to apply new environment variables
+"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart web
