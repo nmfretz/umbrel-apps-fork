@@ -22,6 +22,7 @@ echo "App: ${APP_ID} - Generating Tor Hidden Service..."
 for attempt in $(seq 1 100); do
 	if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
 		echo "App: ${APP_ID} - Hidden service file created successfully!"
+		sleep 5
 		break
 	fi
 	sleep 0.1
@@ -40,5 +41,5 @@ fi
 # echo "App: ${APP_ID} - Restarting web container..."
 # "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart web
 
-echo "App: ${APP_ID} - Restarting to apply new environment variables..."
-"${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
+# echo "App: ${APP_ID} - Restarting to apply new environment variables..."
+# "${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
