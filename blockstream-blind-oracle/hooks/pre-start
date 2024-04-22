@@ -12,7 +12,7 @@ fi
 # "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach web
 
 # Start node container to generate hidden service
-# "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach node
+"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach node
 
 echo "App: ${APP_ID} - Generating Tor Hidden Service..."
 
