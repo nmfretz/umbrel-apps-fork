@@ -39,3 +39,6 @@ fi
 # restart web container
 # echo "App: ${APP_ID} - Restarting web container..."
 # "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart web
+
+echo "App: ${APP_ID} - Restarting to apply new environment variables..."
+"${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
