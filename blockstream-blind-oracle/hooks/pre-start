@@ -9,7 +9,7 @@ if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
 fi
 
 # Create secret if needed
-# "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach web
+"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach web
 
 # Start node container to generate hidden service
 "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach node
@@ -22,6 +22,9 @@ echo "App: ${APP_ID} - Generating Tor Hidden Service..."
 for attempt in $(seq 1 100); do
 	if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
 		echo "App: ${APP_ID} - Hidden service file created successfully!"
+		# restart web container to apply new environment variables
+		echo "App: ${APP_ID} - Restarting web container..."
+		"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart web
 		break
 	fi
 	sleep 0.1
@@ -45,5 +48,5 @@ fi
 # echo "App: ${APP_ID} - Restarting web container..."
 # "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart web
 
-echo "App: ${APP_ID} - Restarting to allow web correct container order..."
-"${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
+# echo "App: ${APP_ID} - Restarting to allow web correct container order..."
+# "${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
