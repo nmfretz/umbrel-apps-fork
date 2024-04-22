@@ -26,7 +26,8 @@ done
 
 if [[ ! -f "${HIDDEN_SERVICE_FILE}" ]]; then
 	echo "App: ${APP_ID} - Hidden service file wasn't created"
+	exit
 fi
 
-# Restart web container to apply new environment variables
-"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart web
+# Restart to apply new environment variables to web container
+"${UMBREL_ROOT}/scripts/app" restart "${APP_ID}"
