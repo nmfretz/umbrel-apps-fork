@@ -8,6 +8,7 @@ services:
 
   server:
     image: deverickapollo/umbrel-monero:v1.0.6@sha256:d4486bedd4fcbb10bc0a0025d0a9a2f411fd18c57434aa711c20768a46689f9c
+    # image: nmfretz/mtest:test@sha256:abeec29790eac61ccdd30f4d88a39462b5f2293883559fd322d9dcc01904b947
     depends_on: [monerod]
     restart: on-failure
     expose:
@@ -24,9 +25,6 @@ services:
       MONERO_DEFAULT_NETWORK: "${MONERO_DEFAULT_NETWORK}"
       MONERO_RPC_USER: "${APP_MONERO_RPC_USER}"
       MONERO_RPC_PASSWORD: "${APP_MONERO_RPC_PASS}"
-      RPC_PORT: "${APP_MONERO_RPC_PORT}"
-      RPC_USER: "${APP_MONERO_RPC_USER}"
-      RPC_PASSWORD: "${APP_MONERO_RPC_PASS}"
       MONERO_RPC_HIDDEN_SERVICE: "${APP_MONERO_RPC_HIDDEN_SERVICE}"
       MONERO_P2P_HIDDEN_SERVICE: "${APP_MONERO_P2P_HIDDEN_SERVICE}"
       DEVICE_DOMAIN_NAME: "${DEVICE_DOMAIN_NAME}"
