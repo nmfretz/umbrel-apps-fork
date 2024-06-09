@@ -72,6 +72,9 @@ OWNER=$(stat -c %u "${QBITTORRENT_CONF_FILE}")
 GROUP=$(stat -c %g "${QBITTORRENT_CONF_FILE}")
 PERMISSIONS=$(stat -c %a "${QBITTORRENT_CONF_FILE}")
 
+echo "qBittorrent.conf file:"
+cat "${QBITTORRENT_CONF_FILE}"
+
 # If a line with `WebUI\Password_PBKDF2` does not exist yet in the qBittorrent.conf, then a custom password hasn't been set yet and we write out `adminadmin` as the default password.
 # This line is expected to be under the [Preferences] section.
 if ! grep --quiet '^WebUI\\Password_PBKDF2' "${QBITTORRENT_CONF_FILE}"; then
@@ -86,6 +89,9 @@ if ! grep --quiet '^WebUI\\Password_PBKDF2' "${QBITTORRENT_CONF_FILE}"; then
     }1' "${QBITTORRENT_CONF_FILE}" > "${TMP_FILE}"
 
     mv "${TMP_FILE}" "${QBITTORRENT_CONF_FILE}"
+
+    echo "qBittorrent.conf file after adding default password:"
+    cat "${QBITTORRENT_CONF_FILE}"
 
     # Restore the original ownership and permissions
     chown "${OWNER}:${GROUP}" "${QBITTORRENT_CONF_FILE}"
