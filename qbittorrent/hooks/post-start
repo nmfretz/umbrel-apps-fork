@@ -56,21 +56,25 @@ set -euo pipefail
 
 APP_DATA_DIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")"
 QBITTORRENT_CONF_FILE="${APP_DATA_DIR}/data/config/config/qBittorrent.conf"
-TMP_FILE="${QBITTORRENT_CONF_FILE}.tmp"
-WAIT_TIME=10  # Set your desired wait time here
 
-echo "Waiting for ${WAIT_TIME} seconds to ensure qBittorrent.conf is fully written..."
-sleep "${WAIT_TIME}"
+WAIT_TIME_SECONDS=30
+SLEEP_INTERVAL_SECONDS=0.1
+MAX_ATTEMPTS=$((WAIT_TIME_SECONDS / SLEEP_INTERVAL_SECONDS))
+
+# Wait up to the defined timeout duration for the qBittorrent.conf file to exist
+echo "Waiting up to ${WAIT_TIME_SECONDS} seconds for qBittorrent.conf file to exist..."
+for attempt in $(seq 1 ${MAX_ATTEMPTS}); do
+	if [[ -f "${QBITTORRENT_CONF_FILE}" ]]; then
+		echo "qBittorrent.conf file exists"
+		break
+	fi
+	sleep ${SLEEP_INTERVAL_SECONDS}
+done
 
 if [[ ! -f "${QBITTORRENT_CONF_FILE}" ]]; then
     echo "qBittorrent.conf was never created. Something is likely wrong with the qBittorrent app."
     exit
 fi
-
-# Capture the original ownership and permissions
-OWNER=$(stat -c %u "${QBITTORRENT_CONF_FILE}")
-GROUP=$(stat -c %g "${QBITTORRENT_CONF_FILE}")
-PERMISSIONS=$(stat -c %a "${QBITTORRENT_CONF_FILE}")
 
 echo "qBittorrent.conf file:"
 cat "${QBITTORRENT_CONF_FILE}"
