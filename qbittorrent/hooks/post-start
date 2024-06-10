@@ -1,51 +1,3 @@
-# #!/usr/bin/env bash
-# set -euo pipefail
-
-# # As of v4.6.1, qBittorrent no longer supports a default password and instead prints a temporary password to the logs, which is not ideal for users.
-# # Users are meant to start qBittorrent, copy the temporary password from the container logs, log in with the temporary password, and then set a new password from the UI.
-# # This script will set the default password to the legacy 'adminadmin' password if the password is not already set. If a user has already set a password, this script will not overwrite it.
-# # The app description in the Umbrel app store encourages users to change the default password.
-
-# APP_DATA_DIR="$(readlink -f $(dirname "${BASH_SOURCE[0]}")/..)"
-# QBITTORRENT_CONF_FILE="${APP_DATA_DIR}/data/config/config/qBittorrent.conf"
-
-# echo "Waiting for file (${QBITTORRENT_CONF_FILE}) to exist..."
-
-# # Wait up to 30 seconds...
-# for attempt in $(seq 1 300); do
-# 	if [[ -f "${QBITTORRENT_CONF_FILE}" ]]; then
-# 		echo "qBittorrent.conf file exists"
-# 		break
-# 	fi
-# 	sleep 0.1
-# done
-
-# if [[ ! -f "${QBITTORRENT_CONF_FILE}" ]]; then
-# 	echo "qBittorrent.conf was never created. Something is likely wrong with the qBittorrent app."
-# 	exit
-# fi
-
-# # If a line with `WebUI\Password_PBKDF2` does not exist yet in the qBittorrent.conf then a custom password hasn't been set yet and we write out `adminadmin` as the default password.
-# # This line is expected to be under the [Preferences] section.
-
-# if ! grep --quiet '^WebUI\\Password_PBKDF2' "${QBITTORRENT_CONF_FILE}"; then
-#   echo "Writing default password adminadmin to qBittorrent.conf"
-
-#   # Add the WebUI\Password_PBKDF2 line directly to the qBittorrent.conf file
-#   # This salted hash is for the password 'adminadmin'
-#   awk '/^\[Preferences\]/ { print; print "WebUI\\Password_PBKDF2=\"@ByteArray(gTzqQHUv3A1X43tLaAhaJQ==:ZBCIBA4honNZ7H66xdEoHpqBC/Vvwj17ZCjQKARSK78ScJWDMdWSfxezHG536UekAL/zpRn571MXCfhtdqiArA==)\""; next }1' "${QBITTORRENT_CONF_FILE}" > "${QBITTORRENT_CONF_FILE}.tmp"
-
-#   # Backup the original configuration file
-#   cp "${QBITTORRENT_CONF_FILE}" "${QBITTORRENT_CONF_FILE}.bak"
-
-#   # Replace the original configuration file with the updated one
-#   mv "${QBITTORRENT_CONF_FILE}.tmp" "${QBITTORRENT_CONF_FILE}"
-
-#   echo "Password has been set to 'adminadmin'."
-# else
-#   echo "'WebUI\\Password_PBKDF2' already exists in qBittorrent.conf. No changes made."
-# fi
-
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -68,54 +20,30 @@ for attempt in $(seq 1 300); do
 done
 
 if [[ ! -f "${QBITTORRENT_CONF_FILE}" ]]; then
-    echo "qBittorrent.conf was never created. Something is likely wrong with the qBittorrent app."
-    exit
+  echo "qBittorrent.conf was never created. Something is likely wrong with the qBittorrent app."
+  exit
 fi
-
-echo "qBittorrent.conf file:"
-cat "${QBITTORRENT_CONF_FILE}"
-
-# stop the qBittorrent service
-"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" stop server
-
-# Add the WebUI\Password_PBKDF2 line directly to the qBittorrent.conf file without creating a temp file, just modify directly
-# This salted hash is for the password 'adminadmin'
-# WITHOUT temp file
-echo "Writing default password adminadmin to qBittorrent.conf"
-sed -i '/^\[Preferences\]/a WebUI\\Password_PBKDF2="@ByteArray(gTzqQHUv3A1X43tLaAhaJQ==:ZBCIBA4honNZ7H66xdEoHpqBC/Vvwj17ZCjQKARSK78ScJWDMdWSfxezHG536UekAL/zpRn571MXCfhtdqiArA==)"' "${QBITTORRENT_CONF_FILE}"
-
-echo "qBittorrent.conf file after adding default password:"
-cat "${QBITTORRENT_CONF_FILE}"
-
-# start the qBittorrent service
-echo "Restarting qBittorrent..."
-"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" start server
 
 # If a line with `WebUI\Password_PBKDF2` does not exist yet in the qBittorrent.conf, then a custom password hasn't been set yet and we write out `adminadmin` as the default password.
 # This line is expected to be under the [Preferences] section.
-# if ! grep --quiet '^WebUI\\Password_PBKDF2' "${QBITTORRENT_CONF_FILE}"; then
-#     echo "Writing default password adminadmin to qBittorrent.conf"
+if ! grep --quiet '^WebUI\\Password_PBKDF2' "${QBITTORRENT_CONF_FILE}"; then
+  echo "WebUI\\Password_PBKDF2 does not exist in qBittorrent.conf. Adding default password."
 
-#     # Add the WebUI\Password_PBKDF2 line directly to the qBittorrent.conf file
-#     # This salted hash is for the password 'adminadmin'
-#     awk '/^\[Preferences\]/ {
-#         print;
-#         print "WebUI\\Password_PBKDF2=\"@ByteArray(gTzqQHUv3A1X43tLaAhaJQ==:ZBCIBA4honNZ7H66xdEoHpqBC/Vvwj17ZCjQKARSK78ScJWDMdWSfxezHG536UekAL/zpRn571MXCfhtdqiArA==)\"";
-#         next
-#     }1' "${QBITTORRENT_CONF_FILE}" > "${TMP_FILE}"
+  # wait 5 seconds for full file to be written
+  echo "Waiting 5 seconds for qBittorrent.conf file to be fully written..."
+  sleep 5
 
-#     mv "${TMP_FILE}" "${QBITTORRENT_CONF_FILE}"
+  # stop the qBittorrent service
+  echo "Stopping qBittorrent..."
+  "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" stop server
 
-#     echo "qBittorrent.conf file after adding default password:"
-#     cat "${QBITTORRENT_CONF_FILE}"
+  echo "Writing default password adminadmin to qBittorrent.conf"
+  sed -i '/^\[Preferences\]/a WebUI\\Password_PBKDF2="@ByteArray(gTzqQHUv3A1X43tLaAhaJQ==:ZBCIBA4honNZ7H66xdEoHpqBC/Vvwj17ZCjQKARSK78ScJWDMdWSfxezHG536UekAL/zpRn571MXCfhtdqiArA==)"' "${QBITTORRENT_CONF_FILE}"
 
-#     # Restore the original ownership and permissions
-#     chown "${OWNER}:${GROUP}" "${QBITTORRENT_CONF_FILE}"
-#     chmod "${PERMISSIONS}" "${QBITTORRENT_CONF_FILE}"
+  # start the qBittorrent service
+  echo "Starting qBittorrent..."
+  "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" start server
 
-#     echo "Password has been set to 'adminadmin'. Restarting qBittorrent..."
-#     # Restart qBittorrent
-#     "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart server
-# else
-#     echo "'WebUI\\Password_PBKDF2' already exists in qBittorrent.conf. No changes made."
-# fi
+else
+  echo "'WebUI\\Password_PBKDF2' already exists in qBittorrent.conf. No changes made."
+fi
