@@ -57,18 +57,14 @@ set -euo pipefail
 APP_DATA_DIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")"
 QBITTORRENT_CONF_FILE="${APP_DATA_DIR}/data/config/config/qBittorrent.conf"
 
-WAIT_TIME_SECONDS=30
-SLEEP_INTERVAL_SECONDS=0.1
-MAX_ATTEMPTS=$((WAIT_TIME_SECONDS / SLEEP_INTERVAL_SECONDS))
-
-# Wait up to the defined timeout duration for the qBittorrent.conf file to exist
-echo "Waiting up to ${WAIT_TIME_SECONDS} seconds for qBittorrent.conf file to exist..."
-for attempt in $(seq 1 ${MAX_ATTEMPTS}); do
+# Wait up to 30 seconds for the qBittorrent.conf file to exist
+echo "Waiting up to 30 seconds for qBittorrent.conf file to exist..."
+for attempt in $(seq 1 300); do
 	if [[ -f "${QBITTORRENT_CONF_FILE}" ]]; then
 		echo "qBittorrent.conf file exists"
 		break
 	fi
-	sleep ${SLEEP_INTERVAL_SECONDS}
+	sleep 0.1
 done
 
 if [[ ! -f "${QBITTORRENT_CONF_FILE}" ]]; then
