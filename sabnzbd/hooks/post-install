@@ -53,6 +53,7 @@ else
 fi
 
 # Add categories to the SABnzbd app's ini file
+# We do this because the *arr apps require exact category names to be present in the SABnzbd app's ini file in order to automatically configure SABnzbd.
 
 categories_content=$(cat << 'EOF'
 [categories]
@@ -107,7 +108,7 @@ priority = 0
 EOF
 )
 
-# Append the content to the ini file
+# Append the categories to the ini file
 echo "$categories_content" >> "$SABNZBD_CONF_FILE"
 
 echo "Appended [categories] section with subheaders to $SABNZBD_CONF_FILE"

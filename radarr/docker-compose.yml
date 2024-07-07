@@ -31,13 +31,13 @@ services:
       TRANSMISSION_HOST: "transmission_server_1"
       TRANSMISSION_PORT: 9091
       ROOT_FOLDER: "/downloads/movies"
-      # optional qBittorrent
+      # optional qBittorrent download client
       QBITTORRENT_INSTALLED: ${APP_RADARR_QBITTORRENT_INSTALLED:-"false"}
       QBITTORRENT_HOST: "qbittorrent_server_1"
       QBITTORRENT_PORT: 8080
-      # optional SABnzbd
+      # optional SABnzbd download client
       SABNZBD_INSTALLED: ${APP_RADARR_SABNZBD_INSTALLED:-"false"}
       SABNZBD_HOST: "sabnzbd_web_1"
       SABNZBD_PORT: 8080
-      SABNZBD_API_KEY: ${SABNZBD_API_KEY:-""}
+      SABNZBD_API_KEY: ${APP_RADARR_SABNZBD_API_KEY:-""}
 
