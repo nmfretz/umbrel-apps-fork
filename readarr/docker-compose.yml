@@ -18,8 +18,7 @@ services:
     restart: on-failure
 
   mac:
-    # image: getumbrel/media-app-configurator:v1.2.0@sha256:6aa568b53f6743dc4a7b3212f97b9d4ca78800ede5eadc0e4b80c7f3af50eda3
-    image: nmfretz/mac-test:v1
+    image: getumbrel/media-app-configurator:v1.3.0@sha256:67e75dd9f5a14402b7816119a8e20189bc2465484cea077909d164687e59742b
     user: "1000:1000"
     restart: on-failure
     volumes:
