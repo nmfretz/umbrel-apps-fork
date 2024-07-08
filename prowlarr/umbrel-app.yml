@@ -39,7 +39,7 @@ defaultPassword: ""
 releaseNotes: >-
   Prowlarr on umbrelOS now:
   
-  - Automatically connects to more download clients (qBittorrent and SABnzbd) installed from the Umbrel App Store. Simply install your preferred download client from the Umbrel App Store, and Prowlarr will handle the rest. No manual configuration required! If you have previously set up Prowlarr with qBittorrent or SABnzbd, this update will not affect your existing settings.
+  - Automatically connects to more download clients (qBittorrent and SABnzbd) installed from the Umbrel App Store. Simply install your preferred download client from the Umbrel App Store, and Prowlarr will handle the rest. No manual configuration required! If you currently have qBittorrent or SABnzbd installed, please update to the latest versions to take advantage of this feature. If you have previously set up Prowlarr with qBittorrent or SABnzbd, this update will not affect your existing settings.
 
   - Comes pre-configured with FlareSolverr. To use it, simply add the “flaresolverr” tag to any indexers that require it.
 

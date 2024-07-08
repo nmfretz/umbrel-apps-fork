@@ -31,7 +31,7 @@ releaseNotes: >-
   Radarr on umbrelOS now offers automatic configuration for qBittorrent and SABnzbd!
 
 
-  - Simply install your preferred download client from the Umbrel App Store, and Radarr will handle the rest. No manual configuration required!
+  - Simply install your preferred download client from the Umbrel App Store, and Radarr will handle the rest. No manual configuration required! If you currently have qBittorrent or SABnzbd installed, please update to the latest versions to take advantage of this feature.
   
   - Already configured? If you have previously set up Radarr with qBittorrent or SABnzbd, this update will not affect your existing settings.
 

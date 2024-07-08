@@ -34,7 +34,7 @@ defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 releaseNotes: >-
-  Lidarr on umbrelOS now offers automatic configuration for qBittorrent and SABnzbd!
+  Lidarr on umbrelOS now offers automatic configuration for qBittorrent and SABnzbd! If you currently have qBittorrent or SABnzbd installed, please update to the latest versions to take advantage of this feature.
 
 
   - Simply install your preferred download client from the Umbrel App Store, and Lidarr will handle the rest. No manual configuration required!
