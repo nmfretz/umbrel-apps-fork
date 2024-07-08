@@ -26,7 +26,7 @@ description: >-
 
   ⚠️ qBittorrent downloads torrents over the Clearnet, not Tor.
 releaseNotes: >-
-  qBittorrent on umbrelOS now offers automatic configuration for media apps like Radarr, Sonarr, Lidarr, Readarr, and Prowlarr. Simply install your preferred media apps from the Umbrel App Store, and qBittorrent will handle the rest. No manual configuration required!
+  qBittorrent on umbrelOS now offers automatic configuration for media apps like Radarr, Sonarr, Lidarr, Readarr, and Prowlarr. Simply install your preferred media apps from the Umbrel App Store, and the rest will be handled for you. No manual configuration required!
 
 
   Please update your media apps to the latest versions to take advantage of this feature. If you have previously set up qBittorrent with media apps, this update will not affect your existing settings.

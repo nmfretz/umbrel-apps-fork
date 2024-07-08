@@ -8,7 +8,7 @@ services:
       PROXY_AUTH_WHITELIST: "/api*"
 
   web:
-    image: lscr.io/linuxserver/sabnzbd:4.1.0@sha256:84a54b2bd29198bc76e253c8592ac72996737d79f845c1db56ab053739cb61bc
+    image: lscr.io/linuxserver/sabnzbd:4.3.2@sha256:db76abdcd65ba2c06a630d17d7e71e75245f8c7ace734d4cadd6402e2776ad5c
     restart: unless-stopped
     stop_grace_period: 1m
     volumes:
