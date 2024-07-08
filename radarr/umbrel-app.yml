@@ -13,7 +13,7 @@ description: >-
   Radarr on umbrelOS will automatically connect to download clients installed from the Umbrel App Store. Choose from Transmission, qBittorerent, and SABnzbd. Simply install your preferred client(s).
 
 
-  All you need to do from there is add an indexer so Radarr can search for music. You can add indexers directly within Radarr, or install Prowlarr from the Umbrel App Store for easier management of indexers across multiple apps.
+  All you need to do from there is add an indexer so Radarr can search for movies. You can add indexers directly within Radarr, or install Prowlarr from the Umbrel App Store for easier management of indexers across multiple apps.
   Add your indexers to Prowlarr and they will be automatically available in Radarr.
 developer: Radarr
 website: https://radarr.video/
