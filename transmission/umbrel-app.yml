@@ -18,7 +18,6 @@ description: >-
 
 
   ⚠️ Transmission downloads torrents over the Clearnet, not Tor.
-developer: Transmission
 website: https://transmissionbt.com/
 dependencies: []
 port: 9091
