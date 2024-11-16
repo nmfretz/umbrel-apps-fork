@@ -21,7 +21,6 @@ description: >-
 developer: Transmission
 website: https://transmissionbt.com/
 dependencies: []
-support: https://github.com/transmission/transmission/issues
 port: 9091
 gallery:
   - 1.jpg
