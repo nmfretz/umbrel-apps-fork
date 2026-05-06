@@ -3,7 +3,7 @@ id: kitchenowl
 name: KitchenOwl
 tagline: A grocery list and recipe manager
 category: files
-version: "0.7.6"
+version: "0.7.8"
 port: 8474
 description: >-
   👨‍🍳 KitchenOwl is a self-hosted, open-source application designed to simplify household management, particularly when it comes to organizing groceries, recipes, meal planning, and shared expenses. Built with privacy and usability in mind, KitchenOwl empowers individuals, families, and shared households to collaboratively manage kitchen-related tasks through a sleek and intuitive interface available on mobile, desktop, and the web.
@@ -36,12 +36,10 @@ gallery:
   - 5.jpg
   - 6.jpg
 releaseNotes: >-
-  This release includes bug fixes and improvements:
-    - Fixed multiple PostgreSQL bugs with the shopping list
-    - Improved markdown rendering
+  This release includes minor fixes and improvements, including fixes for recipe scraping, dynamic colors, Android sync reliability, and iOS session loss caused by background fetch token rotation. It also adds a keep-screen-on setting for shopping lists, OIDC flow launch via query parameter, larger image uploads, and updated translations.
 
 
-  Full release notes: https://github.com/TomBursch/kitchenowl/releases/tag/v0.7.6
+  Full release notes: https://github.com/TomBursch/kitchenowl/releases/tag/v0.7.8
 dependencies: []
 path: ""
 defaultUsername: ""
